@@ -13,8 +13,8 @@ set rep 10      >++++++++++
 while rep       [
   dec rep       -
   clear letter  >[-]
-  set letter 65 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  set rem 26    >++++++++++++++++++++++++++
+  set letter 65 >----[<+>----]<++
+  set rem 26    >>+++++[<+++++>-]<+
   while rem     [
     dec rem     -
     out letter  <.
