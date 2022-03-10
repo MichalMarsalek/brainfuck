@@ -34,9 +34,12 @@ end             >]
 * `while register` - goes to the cell `register` and starts a loop
 * `end` - goes to the`register` cell of the matching `while` command and ends a loop
 
-Registers are given numbers 0, 1, ... in the order the first appear in code.
+Registers are given numbers 0, 1, ... in the order they first appear in code.
 
 All lines starting with a noncommand and all words after a command are ignored. This means, you can send the output of this tool to its input. Also you can add comments to the source easily.
 
 ## Online script
 You can run this program [online](https://play.nim-lang.org/#ix=3RSd).
+
+## References
+The list of constants this program used is extracted from [Esolangs wiki](https://esolangs.org/wiki/Brainfuck_constants). Each constant generating code is changed so that it initializes the current cell rather than the one on the right.
