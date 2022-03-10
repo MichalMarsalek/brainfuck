@@ -13,8 +13,8 @@ set rep 10      >++++++++++
 while rep       [
   dec rep       -
   clear letter  >[-]
-  set letter 65 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  set rem 26    >++++++++++++++++++++++++++
+  set letter 65 >----[<+>----]<++
+  set rem 26    >>+++++[<+++++>-]<+
   while rem     [
     dec rem     -
     out letter  <.
@@ -46,9 +46,12 @@ while reg1
     inc reg2
 ```
 
-Registers are given numbers 0, 1, ... in the order the first appear in code. Note that you don't need to define registers with `def`, nondefined registers are auto defined using any command.
+Registers are given numbers 0, 1, ... in the order they first appear in code. Note that you don't need to define registers with `def`, nondefined registers are auto defined using any command.
 
 All lines starting with a noncommand and all words after a command are ignored. This means, you can send the output of this tool to its input. Also you can add comments to the source easily.
 
 ## Online script
-You can run this program (online)[https://play.nim-lang.org/#ix=3RSd].
+You can run this program [online](https://play.nim-lang.org/#ix=3RSd).
+
+## References
+The list of constants this program used is extracted from [Esolangs wiki](https://esolangs.org/wiki/Brainfuck_constants). Each constant generating code is changed so that it initializes the current cell rather than the one on the right.
