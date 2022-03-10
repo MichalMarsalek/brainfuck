@@ -39,4 +39,4 @@ Registers are given numbers 0, 1, ... in the order the first appear in code.
 All lines starting with a noncommand and all words after a command are ignored. This means, you can send the output of this tool to its input. Also you can add comments to the source easily.
 
 ## Online script
-You can run this program (online)[https://play.nim-lang.org/#ix=3RSd].
+You can run this program [online](https://play.nim-lang.org/#ix=3RSd).
