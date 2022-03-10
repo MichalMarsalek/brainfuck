@@ -25,6 +25,7 @@ end             >]
 ```
 
 ## Commands
+* `def register` - doesn't produce any bf but defines a register
 * `clear register` - goes to the cell `register` and sets it to 0
 * `dec register` - goes to the cell `register` and decrements
 * `inc register` - goes to the cell `register` and increments
@@ -33,8 +34,19 @@ end             >]
 * `set register c` - goes to the cell `register` and sets it to the constant `c` assuming the cell and the one to the right of it is zero
 * `while register` - goes to the cell `register` and starts a loop
 * `end` - goes to the`register` cell of the matching `while` command and ends a loop
+* `repeat reg1 reg2` - stars a nondestructive loop of length `reg2`. Assumes `reg1` starts at zero and doesn't change inside the loop
+                     - shortcut for
+```
+while reg2
+    dec reg2
+    inc reg1
+end
+while reg1
+    dec reg1
+    inc reg2
+```
 
-Registers are given numbers 0, 1, ... in the order the first appear in code.
+Registers are given numbers 0, 1, ... in the order the first appear in code. Note that you don't need to define registers with `def`, nondefined registers are auto defined using any command.
 
 All lines starting with a noncommand and all words after a command are ignored. This means, you can send the output of this tool to its input. Also you can add comments to the source easily.
 

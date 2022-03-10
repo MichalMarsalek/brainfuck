@@ -6,9 +6,11 @@ proc getBfLines(lines: seq[string]): seq[string] =
   var registers: Table[string, int]
   var point = 0
   var stack: seq[string]
-  proc goto(register: string): string =
+  proc def(register: string) =
     if not registers.hasKey(register):
-      registers[register] = registers.len
+      registers[register] = registers.len    
+  proc goto(register: string): string =
+    def(register)
     while point < registers[register]:
       result &= ">"
       inc point
@@ -17,16 +19,18 @@ proc getBfLines(lines: seq[string]): seq[string] =
       dec point
     
   for line in lines:
-    let words = line.strip.split
-    result &= (case words[0]
-    of "clear": goto(words[1]) & "[-]"
-    of "dec":   goto(words[1]) & "-"
-    of "inc":   goto(words[1]) & "+"
-    of "out":   goto(words[1]) & "."
-    of "in":    goto(words[1]) & ","
-    of "set":   replace(goto(words[1]) & constants[words[2].parseInt], "<>", "")
-    of "while": (stack &= words[1]; goto(words[1]) & "[")
+    let w = line.strip.split
+    result &= (case w[0]
+    of "def":   (def(w[1]);"")
+    of "clear": goto(w[1]) & "[-]"
+    of "dec":   goto(w[1]) & "-"
+    of "inc":   goto(w[1]) & "+"
+    of "out":   goto(w[1]) & "."
+    of "in":    goto(w[1]) & ","
+    of "set":   replace(goto(w[1]) & constants[w[2].parseInt], "<>", "")
+    of "while": (stack &= w[1]; goto(w[1]) & "[")
     of "end":   goto(stack.pop) & "]"
+    of "repeat": (stack &= w[1]; goto(w[2]) & "[-" & goto(w[1]) & "+" & goto(w[2]) & "]" & goto(w[1]) & "[-" & goto(w[2]) & "+")
     else:       "")
 
 proc compile(source:string, golf=false): string =
@@ -38,19 +42,86 @@ proc compile(source:string, golf=false): string =
     lines[i] = lines[i].alignLeft(maxlen + 1) & bf[i]
   return lines.join("\n")
 
-echo """
-set NL 10
-set rep 10
-while rep
-  dec rep
-  clear letter
-  set letter 65
-  set rem 26
-  while rem
-    dec rem
-    out letter
-    inc letter
-  end
-  out NL
+var code0 = """
+set size 7
+set i 10
+def j
+while i
+    dec i
+    set space 3
+    set star 4
+    inc NL
 end
-""".compile
+set space 2
+set star 2
+repeat i size
+    inc size
+    inc size
+    clear stars
+    inc stars
+    repeat j size
+        repeat k j
+            out space
+        end
+        out space
+        repeat k stars
+            out star
+        end
+        inc stars
+        inc stars
+        out NL
+    end
+    repeat j size
+        out space
+    end
+    out star
+    out NL
+    out NL
+    dec size
+    dec size
+end
+"""
+
+var code = """
+set size 7
+set i 10
+def j
+while i
+    dec i
+    set space 3
+    set star 4
+    inc NL
+end
+set space 2
+set star 2
+repeat i size
+    inc size
+    inc size
+    clear stars
+    inc stars
+    repeat j size
+        repeat k j
+            out space
+        end
+        out space
+        repeat k stars
+            out star
+        end
+        inc stars
+        inc stars
+        out NL
+    end
+    repeat j size
+        out space
+    end
+    out star
+    out NL
+    out NL
+    dec size
+    dec size
+end
+"""
+
+echo code.compile(true).len
+echo code.compile(true)
+echo code.compile
