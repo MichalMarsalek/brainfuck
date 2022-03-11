@@ -38,7 +38,7 @@ while reg1
     inc reg2
 ```
 
-All registers that appear anywhere in the code are given a position on the tape. The layout minimizing the brainfuck code length is chosen.
+All registers that appear anywhere in the code are given a position on the tape. The layout minimizing the brainfuck code length is chosen. A sequence of `inc`, `dec` and at most `in`/`out` is always executed in an optimal order.
 
 All lines starting with a noncommand and all words after a command are ignored. This means, you can send the output of this tool to its input. Also you can add comments to the source easily.
 
