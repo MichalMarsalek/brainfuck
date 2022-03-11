@@ -43,7 +43,7 @@ All registers that appear anywhere in the code are given a position on the tape.
 All lines starting with a noncommand and all words after a command are ignored. This means, you can send the output of this tool to its input. Also you can add comments to the source easily.
 
 ## Online script
-You can run this program [online](https://play.nim-lang.org/#ix=3RTv).
+You can run this program [online](https://play.nim-lang.org/#ix=3RZo).
 
 ## References
 The list of constants this program used is extracted from [Esolangs wiki](https://esolangs.org/wiki/Brainfuck_constants). Each constant generating code is changed so that it initializes the current cell rather than the one on the right.
