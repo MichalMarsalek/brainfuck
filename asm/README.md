@@ -43,7 +43,13 @@ is a shortcut for
 ```
 while length
     code
+    inc i
     dec length
+end
+while i
+    dec i
+    inc length
+end
 ```
 
 All registers that appear anywhere in the code are given a position on the tape. The layout minimizing the brainfuck code length is chosen. A sequence of `inc`, `dec` and at most one `in`/`out` is always executed in an optimal order.
