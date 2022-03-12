@@ -5,15 +5,18 @@ When this condition is met, the program uses a fixed amount of registers that yo
 Input to this tools is a list of commands each of which is transformed to some brainfuck characters and appended to the original line. This yields a readable version of a brainfuck code (for interpreters that ignore non-bf characters). Alternatively, you can choose to output just the brainfuck.
 
 ## Example
-Following program prints the letters "A"-"Z"
+Following program prints a triangle of stars.
 
 ```
-set rep letter 26
-set letter _ 64
-while rep
-    dec rep
-    inc letter
-    out letter
+inc rep 10
+inc NL 10
+inc _
+set * _ 42
+repeat i rep
+    repeat _ i
+        out *
+    end
+    out NL
 end
 ```
 
@@ -27,23 +30,30 @@ end
 * `while register` - goes to the cell `register` and starts a loop
 * `end` - goes to the`register` cell of the matching `while` command and ends a loop
 * `repeat reg1 reg2` - stars a nondestructive loop of length `reg2`. Assumes `reg1` starts at zero and doesn't change inside the loop
-                     - shortcut for
+                     - You can think of this as a for loop. Inside the loop, `reg1` is equal to 0, 1, ..., `reg2`-1. On the other hand `reg2` lowers by one on each iteration. After the loop, the registers are reset.
+                     The code
 ```
-while reg2
-    dec reg2
-    inc reg1
+repeat i length
+    code
 end
-while reg1
-    dec reg1
-    inc reg2
 ```
 
-All registers that appear anywhere in the code are given a position on the tape. The layout minimizing the brainfuck code length is chosen. A sequence of `inc`, `dec` and at most `in`/`out` is always executed in an optimal order.
+is a shortcut for
+
+```
+while length
+    code
+    dec length
+```
+
+All registers that appear anywhere in the code are given a position on the tape. The layout minimizing the brainfuck code length is chosen. A sequence of `inc`, `dec` and at most one `in`/`out` is always executed in an optimal order.
 
 All lines starting with a noncommand and all words after a command are ignored. This means, you can send the output of this tool to its input. Also you can add comments to the source easily.
 
+If the program gets no input, it is interpreted, assumptions on dummy registers are checked and the result is shown to you. This helps when writing a program that outputs a specific constant string.
+
 ## Online script
-You can run this program [online](https://play.nim-lang.org/#ix=3RZo).
+You can run this program [online](https://play.nim-lang.org/#ix=3S44).
 
 ## References
-The list of constants this program used is extracted from [Esolangs wiki](https://esolangs.org/wiki/Brainfuck_constants). Each constant generating code is changed so that it initializes the current cell rather than the one on the right.
+The list of constants this program used is extracted from [Esolangs wiki](https://esolangs.org/wiki/Brainfuck_constants).

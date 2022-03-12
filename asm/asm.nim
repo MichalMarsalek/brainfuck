@@ -1,9 +1,9 @@
 include prelude
-import algorithm
+import algorithm, math
 
 const constants = split " + ++ +++ ++++ +++++ ++++++ +++++++ ++++++++ +++++++++ ++++++++++ +++++++++++ ++++++++++++ +++++++++++++ ++++++++++++++ +++[A+++++B-]A ++++[A++++B-]A ++++[A++++B-]A+ +++[A++++++B-]A +++[A++++++B-]A+ ++++[A+++++B-]A +++[A+++++++B-]A +++[A+++++++B-]A+ ++++[A++++++B-]A- ++++[A++++++B-]A +++++[A+++++B-]A +++++[A+++++B-]A+ +++[A+++++++++B-]A ++++[A+++++++B-]A ++++[A+++++++B-]A+ +++++[A++++++B-]A +++++[A++++++B-]A+ ++++[A++++++++B-]A ++++[A++++++++B-]A+ --[A--B+++++++]A-- --[A--B+++++++]A- --[A--B+++++++]A ---[A+B+++++++]A ---[A+B+++++++]A+ ---[A+B+++++++]A++ --[A+B++++++]A--- --[A+B++++++]A-- --[A+B++++++]A- --[A+B++++++]A --[A+B++++++]A+ --[A+B++++++]A++ --[A+B++++++]A+++ -[A+B-----]A---- -[A+B-----]A--- -[A+B-----]A-- -[A+B-----]A- -[A+B-----]A -[A+B-----]A+ -[A+B-----]A++ -[A+B-----]A+++ -[A+B-----]A++++ -[A+B-----]A+++++ -[A+B+++++++++]A -[A+B+++++++++]A+ ----[A+B----]A---- ----[A+B----]A--- ----[A+B----]A-- ----[A+B----]A- ----[A+B----]A ----[A+B----]A+ ----[A+B----]A++ ----[A+B----]A+++ ----[A---B----]A ----[A---B----]A+ ----[A---B----]A++ -[A+B-------]A--- -[A+B-------]A-- -[A+B-------]A- -[A+B-------]A -[A+B-------]A+ -[A+B-------]A++ -[A+B-------]A+++ -[A+B---]A-------- -[A+B---]A------- -[A+B---]A------ -[A+B---]A----- -[A+B---]A---- -[A+B---]A--- -[A+B---]A-- -[A+B---]A- -[A+B---]A -[A+B---]A+ -[A+B---]A++ -[A+B---]A+++ -[A+B---]A++++ -[A+B---]A+++++ -[A+B---]A++++++ -[A+B---]A+++++++ -[A+B---]A++++++++ -[A+B---]A+++++++++ -[A++B-----]A------- -[A++B-----]A------ -[A++B-----]A----- -[A++B-----]A---- -[A++B-----]A--- -[A++B-----]A-- -[A++B-----]A- -[A++B-----]A -[A++B-----]A+ -[A++B-----]A++ -[A++B-----]A+++ -[A++B-----]A++++ -[A++B-----]A+++++ -[A--B-------]A-- -[A--B-------]A- -[A--B-------]A -[A--B-------]A+ -[A--B-------]A++ -[A++B+++++++++]A- -[A++B+++++++++]A -[A++B+++++++++]A+ --------[A+++B--]A ----[A+++++B--]A- ----[A+++++B--]A ------[A+++B--]A ----[A+++B--]A-- ----[A+++B--]A- ----[A+++B--]A --[A+B--]A---- --[A+B--]A--- --[A+B--]A-- --[A+B--]A- --[A+B--]A --[A-B--]A- --[A-B--]A --[A-B--]A+ --[A-B--]A++ --[A-B--]A+++ --[A-B--]A++++ ----[A---B--]A ----[A---B--]A+ ----[A---B--]A++ ------[A---B--]A ----[A-----B--]A ----[A-----B--]A+ --------[A---B--]A -[A--B+++++++++]A- -[A--B+++++++++]A -[A--B+++++++++]A+ -[A++B-------]A-- -[A++B-------]A- -[A++B-------]A -[A++B-------]A+ -[A++B-------]A++ -[A--B-----]A----- -[A--B-----]A---- -[A--B-----]A--- -[A--B-----]A-- -[A--B-----]A- -[A--B-----]A -[A--B-----]A+ -[A--B-----]A++ -[A--B-----]A+++ -[A--B-----]A++++ -[A--B-----]A+++++ -[A--B-----]A++++++ -[A--B-----]A+++++++ -[A-B---]A--------- -[A-B---]A-------- -[A-B---]A------- -[A-B---]A------ -[A-B---]A----- -[A-B---]A---- -[A-B---]A--- -[A-B---]A-- -[A-B---]A- -[A-B---]A -[A-B---]A+ -[A-B---]A++ -[A-B---]A+++ -[A-B---]A++++ -[A-B---]A+++++ -[A-B---]A++++++ -[A-B---]A+++++++ -[A-B---]A++++++++ -[A-B-------]A--- -[A-B-------]A-- -[A-B-------]A- -[A-B-------]A -[A-B-------]A+ -[A-B-------]A++ -[A-B-------]A+++ ----[A+++B----]A-- ----[A+++B----]A- ----[A+++B----]A ----[A-B----]A--- ----[A-B----]A-- ----[A-B----]A- ----[A-B----]A ----[A-B----]A+ ----[A-B----]A++ ----[A-B----]A+++ ----[A-B----]A++++ -[A-B+++++++++]A- -[A-B+++++++++]A -[A-B-----]A----- -[A-B-----]A---- -[A-B-----]A--- -[A-B-----]A-- -[A-B-----]A- -[A-B-----]A -[A-B-----]A+ -[A-B-----]A++ -[A-B-----]A+++ -[A-B-----]A++++ --[A-B++++++]A--- --[A-B++++++]A-- --[A-B++++++]A- --[A-B++++++]A --[A-B++++++]A+ --[A-B++++++]A++ --[A-B++++++]A+++ ---[A-B+++++++]A-- ---[A-B+++++++]A- ---[A-B+++++++]A --[A++B+++++++]A --[A++B+++++++]A+ --[A++B+++++++]A++ ----[A--------B+]A- ----[A--------B+]A -----[A------B+]A- -----[A------B+]A ----[A-------B+]A- ----[A-------B+]A ---[A---------B+]A -----[A-----B+]A- -----[A-----B+]A ----[A------B+]A ----[A------B+]A+ ---[A-------B+]A- ---[A-------B+]A ----[A-----B+]A ---[A------B+]A- ---[A------B+]A ----[A----B+]A- ----[A----B+]A ---[A-----B+]A -------------- ------------- ------------ ----------- ---------- --------- -------- ------- ------ ----- ---- --- -- -"
 
-type Command = enum Inc, Dec, Clear, Out, In, Set, While, End, Repeat, Comment
+type Command = enum Inc, Dec, Clear, Out, In, Set, While, EndWhile, Repeat, Comment, EndRepeat
 type Instruction = object
   kind: Command
   reg1, reg2, amount: int
@@ -24,7 +24,7 @@ func toByteCode(source: seq[string]): Program =
       registers[register] = registers.len
       regNames &= register
     return registers[register]
-  var stack: seq[int]
+  var stack: seq[Instruction]
   for line in source:
     let w = line.strip.split
     result.instructions &= (case w[0]
@@ -34,9 +34,12 @@ func toByteCode(source: seq[string]): Program =
     of "out":   Instruction(kind: Command.Out, reg1: getReg(w[1]))
     of "in":    Instruction(kind: Command.In, reg1: getReg(w[1]))
     of "set":   Instruction(kind: Command.Set, reg1: getReg(w[1]), reg2: getReg(w[2]), amount: w[3].parseInt)
-    of "while": (stack &= getReg(w[1]); Instruction(kind: Command.While, reg1: getReg(w[1])))
-    of "end":   Instruction(kind: Command.End, reg1: stack.pop)
-    of "repeat":(stack &= getReg(w[1]); Instruction(kind: Command.Repeat, reg1: getReg(w[1]), reg2: getReg(w[2])))
+    of "while": (stack &= Instruction(kind: Command.While, reg1: getReg(w[1])); stack[^1])
+    of "end":   (let start = stack.pop;(if start.kind == Command.While:
+                    Instruction(kind: Command.EndWhile, reg1: start.reg1)
+                 else:
+                    Instruction(kind: Command.EndRepeat, reg1: start.reg1, reg2: start.reg2)))
+    of "repeat":(stack &= Instruction(kind: Command.Repeat, reg1: getReg(w[1]), reg2: getReg(w[2])); stack[^1] )
     else:       Instruction(kind: Command.Comment))
   result.regNames = regNames
 
@@ -85,10 +88,11 @@ func getBrainfuck(program: var Program, perm: var seq[int]): seq[string] =
         else:            
             resultt &= (case ins.kind
             of Command.Comment: ""
-            of Command.End: goto(ins.reg1, perm) & "]"
+            of Command.EndWhile: goto(ins.reg1, perm) & "]"
+            of Command.EndRepeat: goto(ins.reg1, perm) & "+" & goto(ins.reg2, perm) & "-]" & goto(ins.reg1, perm) & "[-" & goto(ins.reg2, perm) & "+" & goto(ins.reg1, perm) & "]"
             of Command.Set: goto(ins.reg2, perm) & constants[ins.amount].replace("A", goto(ins.reg1, perm)).replace("B", goto(ins.reg2, perm)).replace("A", goto(ins.reg1, perm))
             of Command.While: goto(ins.reg1, perm) & "["
-            of Command.Repeat: goto(ins.reg2, perm) & "[-" & goto(ins.reg1, perm) & "+" & goto(ins.reg2, perm) & "]" & goto(ins.reg1, perm) & "[-" & goto(ins.reg2, perm) & "+"
+            of Command.Repeat: goto(ins.reg2, perm)& "["
             of Command.Clear: goto(ins.reg1, perm) & "[-]"
             of Command.Dec: goto(ins.reg1, perm) & "-".repeat(ins.amount)
             of Command.Inc: goto(ins.reg1, perm) & "+".repeat(ins.amount)
@@ -98,32 +102,62 @@ func getBrainfuck(program: var Program, perm: var seq[int]): seq[string] =
     return resultt
 
 func getLength(program: var Program, perm: var seq[int]): int =
-    return getBrainfuck(program, perm).join.len #TODO replace this with faster calculation
-    var point = 0
-    var freeMove = true
-    template goto(reg: int) =
-        let reg2 = reg
-        if freeMove:
-            freeMove = false
-        else:
-            result += abs(perm[reg2] - point)
-        point = perm[reg2]
-    for ins in program.instructions:
-        case ins.kind
-        of Command.Comment: discard
-        of Command.Set: goto(ins.reg2); goto(ins.reg1); goto(ins.reg2); goto(ins.reg1)
-        of Command.Repeat: goto(ins.reg2); goto(ins.reg1);goto(ins.reg2); goto(ins.reg1);goto(ins.reg2)
-        else: goto(ins.reg1)
+    return getBrainfuck(program, perm).mapIt(it.len).sum #TODO replace this with faster calculation
 
 func interpret(program: Program): string =
     if program.instructions.anyIt(it.kind == Command.In): return
-    return ""
+    var program = program
+    var stack: seq[int]
+    for i,p in program.instructions:
+        if p.kind == Command.While or p.kind == Command.Repeat:
+            stack &= i
+        elif p.kind == Command.EndWhile or p.kind == Command.EndRepeat:
+            let w = stack.pop
+            program.instructions[w].amount = i # the field amount is used as instruction pointer instead
+            program.instructions[i].amount = w
+    var i = 0
+    var registers = newSeq[int](program.instructions.len)
+    while i < program.instructions.len:
+        let ins = program.instructions[i]
+        case ins.kind
+        of Command.Comment: discard
+        of Command.EndWhile:
+            if registers[ins.reg1] > 0:
+                i = ins.amount
+        of Command.EndRepeat:  
+            registers[ins.reg1] += 1
+            registers[ins.reg2] -= 1          
+            if registers[ins.reg2] > 0:
+                i = ins.amount
+            else:
+                registers[ins.reg2] = registers[ins.reg1]
+                registers[ins.reg1] = 0
+        of Command.Set:
+            if registers[ins.reg2] != 0:
+                raise newException(ValueError, "Register " & program.regNames[ins.reg2] & " is nonzero on line " & $i)
+            registers[ins.reg1] = ins.amount
+        of Command.While:
+            if registers[ins.reg1] > 0:
+                i = ins.amount-1
+        of Command.Repeat:
+            if registers[ins.reg1] != 0:
+                raise newException(ValueError, "Register " & program.regNames[ins.reg2] & " is nonzero on line " & $i)
+            if registers[ins.reg2] > 0:
+                i = ins.amount - 1
+        of Command.Clear:  registers[ins.reg1] = 0
+        of Command.Dec:    registers[ins.reg1] -= ins.amount
+        of Command.Inc:    registers[ins.reg1] += ins.amount
+        of Command.Out:    result &= chr(registers[ins.reg1])
+        of Command.In:     discard
+        i += 1
 
 func getOptimalBrainfuck(program: var Program): (seq[string], seq[int]) =
     var perm = toSeq(0..<program.regNames.len)
     var minLength = int.high
     var minPerm: seq[int]
-    while true:
+    var permCount = 0
+    const maxPerms = 19_958_400 # 11!/2
+    for _ in 1..maxPerms:
         let length = getLength(program, perm)
         if length < minLength:
             minLength = length
@@ -143,17 +177,23 @@ proc compile(source:string, golf=false) =
   echo "Memory layout: ", registers.join(" ")
   echo "               ", toSeq(0..<registers.len).mapIt(($(it - freeMove)).align(registers[it].len)).join(" ")
   echo "Golfed: ", bf
+  let output = interpret(program)
+  if output != "":
+    echo "Output:"
+    echo output
   let maxlen = lines.mapIt(it.len).max
   for i in 0..<lines.len:
     echo lines[i].alignLeft(maxlen + 1), bfLines[i]
 
 var code = """
-set rep letter 26
-set letter _ 64
-while rep
-    dec rep
-    inc letter
-    out letter
+inc rep 10
+inc NL 10
+set * _ 42
+repeat i rep
+    repeat _ i
+        out *
+    end
+    out NL
 end
 """
 
