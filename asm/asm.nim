@@ -41,6 +41,8 @@ func toByteCode(source: seq[string]): Program =
                     Instruction(kind: Command.EndRepeat, reg1: start.reg1, reg2: start.reg2)))
     of "repeat":(stack &= Instruction(kind: Command.Repeat, reg1: getReg(w[1]), reg2: getReg(w[2])); stack[^1] )
     else:       Instruction(kind: Command.Comment))
+  if stack.len > 0:
+    raise newException(ValueError, "Unexpected EOF. " & $stack.len & " loop blocks still open.")
   result.regNames = regNames
 
 func getBrainfuck(program: var Program, perm: var seq[int]): seq[string] =
