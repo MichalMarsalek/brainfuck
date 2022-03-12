@@ -56,9 +56,10 @@ func getBrainfuck(program: var Program, perm: var seq[int]): seq[string] =
     proc goto(reg: int, perm_i: var seq[int]): string =
         var perm_i = perm_i
         if debts.len > 0:
-            debts = debts.sortedByIt(perm_i[it.reg1])
             if point > reg:
-                debts = debts.reversed
+                debts = debts.sortedByIt(-perm_i[it.reg1])
+            else:
+                debts = debts.sortedByIt(perm_i[it.reg1])
             var payback = ""
             for ins in debts:
                 payback &= (case ins.kind
@@ -134,7 +135,7 @@ proc compile(source:string, golf=false) =
   var lines = source.strip.splitLines
   var program = toByteCode(lines)
   let (bfLines, perm) = program.getOptimalBrainfuck
-  var registers = perm.mapIt(program.regNames[it])
+  var registers = toSeq(0..<perm.len).mapIt(perm.find it).mapIt(program.regNames[it])
   let freeMove = registers.find(program.regNames[0])
   registers = registers.mapIt(it.align(3))
   let bf = bfLines.join
