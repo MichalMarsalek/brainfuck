@@ -127,9 +127,9 @@ func interpret(program: Program): string =
             if registers[ins.reg1] > 0:
                 i = ins.amount
         of Command.EndRepeat:  
-            registers[ins.reg1] += 1
-            registers[ins.reg2] -= 1          
-            if registers[ins.reg2] > 0:
+            registers[ins.reg1] = (registers[ins.reg1] + 1) mod 256
+            registers[ins.reg2] = (registers[ins.reg2] + 255) mod 256
+            if registers[ins.reg2] > 0:      
                 i = ins.amount
             else:
                 registers[ins.reg2] = registers[ins.reg1]
@@ -144,11 +144,11 @@ func interpret(program: Program): string =
         of Command.Repeat:
             if registers[ins.reg1] != 0:
                 raise newException(ValueError, "Register " & program.regNames[ins.reg2] & " is nonzero on line " & $i)
-            if registers[ins.reg2] > 0:
-                i = ins.amount - 1
+            if registers[ins.reg2] == 0:
+                i = ins.amount                
         of Command.Clear:  registers[ins.reg1] = 0
-        of Command.Dec:    registers[ins.reg1] -= ins.amount
-        of Command.Inc:    registers[ins.reg1] += ins.amount
+        of Command.Dec:    registers[ins.reg1] = (registers[ins.reg1]+256-ins.amount) mod 256
+        of Command.Inc:    registers[ins.reg1] = (registers[ins.reg1] + ins.amount) mod 256
         of Command.Out:    result &= chr(registers[ins.reg1])
         of Command.In:     discard
         i += 1
@@ -186,6 +186,7 @@ proc compile(source:string, golf=false) =
   let maxlen = lines.mapIt(it.len).max
   for i in 0..<lines.len:
     echo lines[i].alignLeft(maxlen + 1), bfLines[i]
+
 
 var code = """
 inc rep 10
