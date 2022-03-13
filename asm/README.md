@@ -4,7 +4,7 @@ This tool helps with writing brainfuck programs with "regular" loops (sum of mov
 When this condition is met, the program uses a fixed amount of registers that you "manually" switch between. This tool allows you to name those registers and generate the switches for you. Furthermore it can help you initialize constants.
 Input to this tools is a list of commands each of which is transformed to some brainfuck characters and appended to the original line. This yields a readable version of a brainfuck code (for interpreters that ignore non-bf characters). Alternatively, you can choose to output just the brainfuck.
 
-## Example
+## Examples
 Following program prints a triangle of stars.
 
 ```
@@ -19,6 +19,31 @@ repeat i rep
     out NL
 end
 ```
+
+The next program takes two inputs A, B as decimal digits and a rectangle A×B made of stars.
+```
+set 0 res 48
+set * res 42
+in A
+in B
+while 0
+    dec 0
+    dec A
+    dec B
+end
+while A
+    dec A
+    repeat _ B
+        inc res
+    end
+end
+while res
+    dec res
+    out *
+end
+```
+
+
 
 ## Commands
 * `clear register` - goes to the cell `register` and sets it to 0
@@ -59,7 +84,7 @@ All lines starting with a noncommand and all words after a command are ignored. 
 If the program gets no input, it is interpreted, assumptions on dummy registers are checked and the result is shown to you. This helps when writing a program that outputs a specific constant string.
 
 ## Online script
-You can run this program [online](https://play.nim-lang.org/#ix=3S4V).
+You can run this program [online](https://play.nim-lang.org/#ix=3S7x).
 
 ## References
 The list of constants this program used is extracted from [Esolangs wiki](https://esolangs.org/wiki/Brainfuck_constants).

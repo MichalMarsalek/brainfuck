@@ -101,13 +101,14 @@ func getBrainfuck(program: var Program, perm: var seq[int]): seq[string] =
             of Command.Out: goto(ins.reg1, perm) & "."
             of Command.In: goto(ins.reg1, perm) & ","
             )
+    discard goto(point, perm)
     return resultt
 
 func getLength(program: var Program, perm: var seq[int]): int =
     return getBrainfuck(program, perm).mapIt(it.len).sum #TODO replace this with faster calculation
 
-func interpret(program: Program): string =
-    if program.instructions.anyIt(it.kind == Command.In): return
+func interpret(program: Program, input=""): string =
+    var input = input.reversed
     var program = program
     var stack: seq[int]
     for i,p in program.instructions:
@@ -120,6 +121,7 @@ func interpret(program: Program): string =
     var i = 0
     var registers = newSeq[int](program.instructions.len)
     while i < program.instructions.len:
+        #debugEcho (i, registers, input)
         let ins = program.instructions[i]
         case ins.kind
         of Command.Comment: discard
@@ -150,7 +152,10 @@ func interpret(program: Program): string =
         of Command.Dec:    registers[ins.reg1] = (registers[ins.reg1]+256-ins.amount) mod 256
         of Command.Inc:    registers[ins.reg1] = (registers[ins.reg1] + ins.amount) mod 256
         of Command.Out:    result &= chr(registers[ins.reg1])
-        of Command.In:     discard
+        of Command.In:
+            if input.len == 0:
+                return result & "\n(end of input)"
+            registers[ins.reg1] = input.pop.ord
         i += 1
 
 func getOptimalBrainfuck(program: var Program): (seq[string], seq[int]) =
@@ -167,7 +172,7 @@ func getOptimalBrainfuck(program: var Program): (seq[string], seq[int]) =
         if (not perm.nextPermutation) or 2*perm[0] > program.regNames.len: break
     return (getBrainfuck(program, minPerm), minPerm)
 
-proc compile(source:string, golf=false) =
+proc compile(source:string, input="", golf=false) =
   var lines = source.strip.splitLines
   var program = toByteCode(lines)
   let (bfLines, perm) = program.getOptimalBrainfuck
@@ -179,7 +184,7 @@ proc compile(source:string, golf=false) =
   echo "Memory layout: ", registers.join(" ")
   echo "               ", toSeq(0..<registers.len).mapIt(($(it - freeMove)).align(registers[it].len)).join(" ")
   echo "Golfed: ", bf
-  let output = interpret(program)
+  let output = interpret(program, input)
   if output != "":
     echo "Output:"
     echo output
@@ -189,15 +194,23 @@ proc compile(source:string, golf=false) =
 
 
 var code = """
-inc rep 10
+set 0 res 48
+set * res 42
 inc NL 10
-set * _ 42
-repeat i rep
-    repeat _ i
+in A
+in B
+while 0
+    dec 0
+    dec A
+    dec B
+end
+while A
+    dec A
+    repeat _ B
         out *
     end
     out NL
 end
 """
 
-compile code
+compile(code, "37")
