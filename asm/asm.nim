@@ -33,7 +33,7 @@ func toByteCode(source: seq[string]): Program =
     of "inc":   Instruction(kind: Command.Inc, reg1: getReg(w[1]), amount: (try:w[2].parseInt except: 1))
     of "out":   Instruction(kind: Command.Out, reg1: getReg(w[1]))
     of "in":    Instruction(kind: Command.In, reg1: getReg(w[1]))
-    of "set":   Instruction(kind: Command.Set, reg1: getReg(w[1]), reg2: getReg(w[2]), amount: w[3].parseInt)
+    of "set":   (if w[3].parseInt in 15..241: Instruction(kind: Command.Set, reg1: getReg(w[1]), reg2: getReg(w[2]), amount: w[3].parseInt) else: raise newException(ValueError, "The amount to be set must be in 15..241."))
     of "while": (stack &= Instruction(kind: Command.While, reg1: getReg(w[1])); stack[^1])
     of "end":   (let start = stack.pop;(if start.kind == Command.While:
                     Instruction(kind: Command.EndWhile, reg1: start.reg1)
