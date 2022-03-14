@@ -84,7 +84,7 @@ All lines starting with a noncommand and all words after a command are ignored. 
 If the program gets no input, it is interpreted, assumptions on dummy registers are checked and the result is shown to you. This helps when writing a program that outputs a specific constant string.
 
 ## Online script
-You can run this program [online](https://play.nim-lang.org/#ix=3S7x).
+You can run this program [online](https://play.nim-lang.org/#ix=3Sck).
 
 ## References
 The list of constants this program used is extracted from [Esolangs wiki](https://esolangs.org/wiki/Brainfuck_constants).
