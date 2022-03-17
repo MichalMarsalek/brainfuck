@@ -141,7 +141,7 @@ func interpret(program: Program, input=""): string =
                 raise newException(ValueError, "Register " & program.regNames[ins.reg2] & " is nonzero on line " & $i)
             registers[ins.reg1] = ins.amount
         of Command.While:
-            if registers[ins.reg1] > 0:
+            if registers[ins.reg1] == 0:
                 i = ins.amount-1
         of Command.Repeat:
             if registers[ins.reg1] != 0:
