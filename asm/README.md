@@ -49,7 +49,7 @@ end
 * `clear register` - goes to the cell `register` and sets it to 0
 * `dec register [amount=1]` - goes to the cell `register` and decrements it by the given amount
 * `inc register [amount=1]` - goes to the cell `register` and incrementsit by the given amount
-* `out register` - goes to the cell `register` and outputs
+* `out register [amount=1]` - goes to the cell `register` and outputs `amount` times
 * `in register` - goes to the cell `register` and gets input
 * `set register dummy c` - goes to the cell `register` and sets it to the constant `c` assuming both registers `register`and `dummy` are zero
 * `while register` - goes to the cell `register` and starts a loop
@@ -76,6 +76,14 @@ while i
     inc length
 end
 ```
+* `move reg1 reg2` - increases `reg2` by `reg1`, then clears `reg1`. Shortcut for
+```
+while reg1
+    dec reg1
+    inc reg2
+end
+```
+
 
 All registers that appear anywhere in the code are given a position on the tape. The layout minimizing the brainfuck code length is chosen. A sequence of `inc`, `dec` and at most one `in`/`out` is always executed in an optimal order.
 
@@ -85,7 +93,7 @@ If the program gets no input, it is interpreted, assumptions on dummy registers 
 
 ## Online script
 
-You can run this program [online](https://play.nim-lang.org/#ix=3SG3).
+You can run this program [online](https://play.nim-lang.org/#ix=3TOc).
 
 ## References
 The list of constants this program used is extracted from [Esolangs wiki](https://esolangs.org/wiki/Brainfuck_constants).

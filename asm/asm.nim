@@ -3,7 +3,7 @@ import algorithm, math
 
 const constants = split " + ++ +++ ++++ +++++ ++++++ +++++++ ++++++++ +++++++++ ++++++++++ +++++++++++ ++++++++++++ +++++++++++++ ++++++++++++++ +++[A+++++B-]A ++++[A++++B-]A ++++[A++++B-]A+ +++[A++++++B-]A +++[A++++++B-]A+ ++++[A+++++B-]A +++[A+++++++B-]A +++[A+++++++B-]A+ ++++[A++++++B-]A- ++++[A++++++B-]A +++++[A+++++B-]A +++++[A+++++B-]A+ +++[A+++++++++B-]A ++++[A+++++++B-]A ++++[A+++++++B-]A+ +++++[A++++++B-]A +++++[A++++++B-]A+ ++++[A++++++++B-]A ++++[A++++++++B-]A+ --[A--B+++++++]A-- --[A--B+++++++]A- --[A--B+++++++]A ---[A+B+++++++]A ---[A+B+++++++]A+ ---[A+B+++++++]A++ --[A+B++++++]A--- --[A+B++++++]A-- --[A+B++++++]A- --[A+B++++++]A --[A+B++++++]A+ --[A+B++++++]A++ --[A+B++++++]A+++ -[A+B-----]A---- -[A+B-----]A--- -[A+B-----]A-- -[A+B-----]A- -[A+B-----]A -[A+B-----]A+ -[A+B-----]A++ -[A+B-----]A+++ -[A+B-----]A++++ -[A+B-----]A+++++ -[A+B+++++++++]A -[A+B+++++++++]A+ ----[A+B----]A---- ----[A+B----]A--- ----[A+B----]A-- ----[A+B----]A- ----[A+B----]A ----[A+B----]A+ ----[A+B----]A++ ----[A+B----]A+++ ----[A---B----]A ----[A---B----]A+ ----[A---B----]A++ -[A+B-------]A--- -[A+B-------]A-- -[A+B-------]A- -[A+B-------]A -[A+B-------]A+ -[A+B-------]A++ -[A+B-------]A+++ -[A+B---]A-------- -[A+B---]A------- -[A+B---]A------ -[A+B---]A----- -[A+B---]A---- -[A+B---]A--- -[A+B---]A-- -[A+B---]A- -[A+B---]A -[A+B---]A+ -[A+B---]A++ -[A+B---]A+++ -[A+B---]A++++ -[A+B---]A+++++ -[A+B---]A++++++ -[A+B---]A+++++++ -[A+B---]A++++++++ -[A+B---]A+++++++++ -[A++B-----]A------- -[A++B-----]A------ -[A++B-----]A----- -[A++B-----]A---- -[A++B-----]A--- -[A++B-----]A-- -[A++B-----]A- -[A++B-----]A -[A++B-----]A+ -[A++B-----]A++ -[A++B-----]A+++ -[A++B-----]A++++ -[A++B-----]A+++++ -[A--B-------]A-- -[A--B-------]A- -[A--B-------]A -[A--B-------]A+ -[A--B-------]A++ -[A++B+++++++++]A- -[A++B+++++++++]A -[A++B+++++++++]A+ --------[A+++B--]A ----[A+++++B--]A- ----[A+++++B--]A ------[A+++B--]A ----[A+++B--]A-- ----[A+++B--]A- ----[A+++B--]A --[A+B--]A---- --[A+B--]A--- --[A+B--]A-- --[A+B--]A- --[A+B--]A --[A-B--]A- --[A-B--]A --[A-B--]A+ --[A-B--]A++ --[A-B--]A+++ --[A-B--]A++++ ----[A---B--]A ----[A---B--]A+ ----[A---B--]A++ ------[A---B--]A ----[A-----B--]A ----[A-----B--]A+ --------[A---B--]A -[A--B+++++++++]A- -[A--B+++++++++]A -[A--B+++++++++]A+ -[A++B-------]A-- -[A++B-------]A- -[A++B-------]A -[A++B-------]A+ -[A++B-------]A++ -[A--B-----]A----- -[A--B-----]A---- -[A--B-----]A--- -[A--B-----]A-- -[A--B-----]A- -[A--B-----]A -[A--B-----]A+ -[A--B-----]A++ -[A--B-----]A+++ -[A--B-----]A++++ -[A--B-----]A+++++ -[A--B-----]A++++++ -[A--B-----]A+++++++ -[A-B---]A--------- -[A-B---]A-------- -[A-B---]A------- -[A-B---]A------ -[A-B---]A----- -[A-B---]A---- -[A-B---]A--- -[A-B---]A-- -[A-B---]A- -[A-B---]A -[A-B---]A+ -[A-B---]A++ -[A-B---]A+++ -[A-B---]A++++ -[A-B---]A+++++ -[A-B---]A++++++ -[A-B---]A+++++++ -[A-B---]A++++++++ -[A-B-------]A--- -[A-B-------]A-- -[A-B-------]A- -[A-B-------]A -[A-B-------]A+ -[A-B-------]A++ -[A-B-------]A+++ ----[A+++B----]A-- ----[A+++B----]A- ----[A+++B----]A ----[A-B----]A--- ----[A-B----]A-- ----[A-B----]A- ----[A-B----]A ----[A-B----]A+ ----[A-B----]A++ ----[A-B----]A+++ ----[A-B----]A++++ -[A-B+++++++++]A- -[A-B+++++++++]A -[A-B-----]A----- -[A-B-----]A---- -[A-B-----]A--- -[A-B-----]A-- -[A-B-----]A- -[A-B-----]A -[A-B-----]A+ -[A-B-----]A++ -[A-B-----]A+++ -[A-B-----]A++++ --[A-B++++++]A--- --[A-B++++++]A-- --[A-B++++++]A- --[A-B++++++]A --[A-B++++++]A+ --[A-B++++++]A++ --[A-B++++++]A+++ ---[A-B+++++++]A-- ---[A-B+++++++]A- ---[A-B+++++++]A --[A++B+++++++]A --[A++B+++++++]A+ --[A++B+++++++]A++ ----[A--------B+]A- ----[A--------B+]A -----[A------B+]A- -----[A------B+]A ----[A-------B+]A- ----[A-------B+]A ---[A---------B+]A -----[A-----B+]A- -----[A-----B+]A ----[A------B+]A ----[A------B+]A+ ---[A-------B+]A- ---[A-------B+]A ----[A-----B+]A ---[A------B+]A- ---[A------B+]A ----[A----B+]A- ----[A----B+]A ---[A-----B+]A -------------- ------------- ------------ ----------- ---------- --------- -------- ------- ------ ----- ---- --- -- -"
 
-type Command = enum Inc, Dec, Clear, Out, In, Set, While, EndWhile, Repeat, Comment, EndRepeat
+type Command = enum Inc, Dec, Clear, Out, In, Set, While, EndWhile, Repeat, Comment, EndRepeat, Move
 type Instruction = object
   kind: Command
   reg1, reg2, amount: int
@@ -54,6 +54,8 @@ func toByteCode(source: seq[string]): Program =
     of "repeat":
         stack &= Instruction(kind: Command.Repeat, reg1: getReg(w[1]), reg2: getReg(w[2]))
         result.instructions &= stack[^1]
+    of "move":
+        result.instructions &= Instruction(kind: Command.Move, reg1: getReg(w[1]), reg2: getReg(w[2]))
     else:
         result.instructions &= Instruction(kind: Command.Comment)
   if stack.len > 0:
@@ -111,6 +113,7 @@ func getBrainfuck(program: var Program, perm: var seq[int]): seq[string] =
             of Command.While: goto(ins.reg1, perm) & "["
             of Command.Repeat: goto(ins.reg2, perm)& "["
             of Command.Clear: goto(ins.reg1, perm) & "[-]"
+            of Command.Move: "[" & goto0(ins.reg1, perm) & "-" & goto0(ins.reg2, perm) & "+" & goto0(ins.reg1, perm) & "]"
             of Command.Dec: goto(ins.reg1, perm) & "-".repeat(ins.amount)
             of Command.Inc: goto(ins.reg1, perm) & "+".repeat(ins.amount)
             of Command.Out: goto(ins.reg1, perm) & ".".repeat(ins.amount)
@@ -155,6 +158,9 @@ func interpret(program: Program, input=""): string =
             if registers[ins.reg2] != 0:
                 raise newException(ValueError, "Register " & program.regNames[ins.reg2] & " is nonzero on line " & $i)
             registers[ins.reg1] = ins.amount
+        of Command.Move:
+            registers[ins.reg2] += registers[ins.reg1]
+            registers[ins.reg1] = 0
         of Command.While:
             if registers[ins.reg1] == 0:
                 i = ins.amount-1
@@ -178,7 +184,7 @@ func getOptimalPerms(program: var Program, target=0): seq[seq[int]] =
     var minLength = int.high
     var minPerms: seq[seq[int]]
     var permCount = 0
-    const maxPerms = 100 #19_958_400 # 11!/2
+    const maxPerms = 19_958_400 # 11!/2
     for _ in 1..maxPerms:
         let length = getLength(program, perm)
         if target == 0 or length == target:
@@ -193,6 +199,10 @@ func getOptimalPerms(program: var Program, target=0): seq[seq[int]] =
 proc compile(source:string, input="", golf=false, target=0) =
   var lines = source.strip.splitLines
   var program = toByteCode(lines)
+  let output = interpret(program, input)
+  if output != "":
+    echo "Output:"
+    echo output
   let perms = program.getOptimalPerms(target)
   for perm in perms:
       var perm = perm
@@ -205,10 +215,6 @@ proc compile(source:string, input="", golf=false, target=0) =
       echo "Memory layout: ", registers.join(" ")
       echo "               ", toSeq(0..<registers.len).mapIt(($(it - freeMove)).align(registers[it].len)).join(" ")
       echo "Golfed: ", bf
-  let output = interpret(program, input)
-  if output != "":
-    echo "Output:"
-    echo output
   let maxlen = lines.mapIt(it.len).max
   var perm = perms[0]
   let bfLines = getBrainfuck(program, perm)
@@ -217,22 +223,6 @@ proc compile(source:string, input="", golf=false, target=0) =
 
 
 var code = """
-set 0 res 48
-set * res 42
-inc NL 10
-in A
-in B
-while 0
-    dec 0
-    dec A
-    dec B
-end
-while A
-    dec A
-    repeat _ B
-        out *
-    end
-    out NL
-end
+
 """
 compile(code, "37")
