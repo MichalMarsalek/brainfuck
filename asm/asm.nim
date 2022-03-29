@@ -25,22 +25,37 @@ func toByteCode(source: seq[string]): Program =
       regNames &= register
     return registers[register]
   var stack: seq[Instruction]
-  for line in source:
+  for i, line in source:
     let w = line.strip.split
-    result.instructions &= (case w[0]
-    of "clear": Instruction(kind: Command.Clear, reg1: getReg(w[1]))
-    of "dec":   Instruction(kind: Command.Dec, reg1: getReg(w[1]), amount: (try:w[2].parseInt except: 1))
-    of "inc":   Instruction(kind: Command.Inc, reg1: getReg(w[1]), amount: (try:w[2].parseInt except: 1))
-    of "out":   Instruction(kind: Command.Out, reg1: getReg(w[1]))
-    of "in":    Instruction(kind: Command.In, reg1: getReg(w[1]))
-    of "set":   (if w[3].parseInt in 15..241: Instruction(kind: Command.Set, reg1: getReg(w[1]), reg2: getReg(w[2]), amount: w[3].parseInt) else: raise newException(ValueError, "The amount to be set must be in 15..241."))
-    of "while": (stack &= Instruction(kind: Command.While, reg1: getReg(w[1])); stack[^1])
-    of "end":   (let start = stack.pop;(if start.kind == Command.While:
-                    Instruction(kind: Command.EndWhile, reg1: start.reg1)
-                 else:
-                    Instruction(kind: Command.EndRepeat, reg1: start.reg1, reg2: start.reg2)))
-    of "repeat":(stack &= Instruction(kind: Command.Repeat, reg1: getReg(w[1]), reg2: getReg(w[2])); stack[^1] )
-    else:       Instruction(kind: Command.Comment))
+    case w[0]
+    of "clear": result.instructions &= Instruction(kind: Command.Clear, reg1: getReg(w[1]))
+    of "dec":   result.instructions &= Instruction(kind: Command.Dec, reg1: getReg(w[1]), amount: (try:w[2].parseInt except: 1))
+    of "inc":   result.instructions &= Instruction(kind: Command.Inc, reg1: getReg(w[1]), amount: (try:w[2].parseInt except: 1))
+    of "out":   result.instructions &= Instruction(kind: Command.Out, reg1: getReg(w[1]), amount: (try:w[2].parseInt except: 1))
+    of "in":    result.instructions &= Instruction(kind: Command.In, reg1: getReg(w[1]), amount: (try:w[2].parseInt except: 1))
+    of "set":
+        if w[3].parseInt in 15..241:
+            result.instructions &= Instruction(kind: Command.Set, reg1: getReg(w[1]), reg2: getReg(w[2]), amount: w[3].parseInt)
+        else:
+            raise newException(ValueError, "The amount to be set must be in 15..241.")
+    of "while":
+        stack &= Instruction(kind: Command.While, reg1: getReg(w[1]))
+        result.instructions &= stack[^1]
+    of "end":
+        var start: Instruction
+        try:
+            start = stack.pop
+        except:
+            raise newException(ValueError, "Unexpected end on line " & $i & ". No loop blocks still open.")
+        if start.kind == Command.While:
+            result.instructions &= Instruction(kind: Command.EndWhile, reg1: start.reg1)
+        else:
+            result.instructions &= Instruction(kind: Command.EndRepeat, reg1: start.reg1, reg2: start.reg2)
+    of "repeat":
+        stack &= Instruction(kind: Command.Repeat, reg1: getReg(w[1]), reg2: getReg(w[2]))
+        result.instructions &= stack[^1]
+    else:
+        result.instructions &= Instruction(kind: Command.Comment)
   if stack.len > 0:
     raise newException(ValueError, "Unexpected EOF. " & $stack.len & " loop blocks still open.")
   result.regNames = regNames
@@ -70,7 +85,7 @@ func getBrainfuck(program: var Program, perm: var seq[int]): seq[string] =
                 payback &= (case ins.kind
                 of Command.Dec: goto0(ins.reg1, perm_i) & "-".repeat(ins.amount)
                 of Command.Inc: goto0(ins.reg1, perm_i) & "+".repeat(ins.amount)
-                of Command.Out: goto0(ins.reg1, perm_i) & "."
+                of Command.Out: goto0(ins.reg1, perm_i) & ".".repeat(ins.amount)
                 of Command.In:  goto0(ins.reg1, perm_i) & ","
                 else: "")
             resultt[lastDebtLine] = payback
@@ -98,7 +113,7 @@ func getBrainfuck(program: var Program, perm: var seq[int]): seq[string] =
             of Command.Clear: goto(ins.reg1, perm) & "[-]"
             of Command.Dec: goto(ins.reg1, perm) & "-".repeat(ins.amount)
             of Command.Inc: goto(ins.reg1, perm) & "+".repeat(ins.amount)
-            of Command.Out: goto(ins.reg1, perm) & "."
+            of Command.Out: goto(ins.reg1, perm) & ".".repeat(ins.amount)
             of Command.In: goto(ins.reg1, perm) & ","
             )
     discard goto(point, perm)
@@ -151,44 +166,52 @@ func interpret(program: Program, input=""): string =
         of Command.Clear:  registers[ins.reg1] = 0
         of Command.Dec:    registers[ins.reg1] = (registers[ins.reg1]+256-ins.amount) mod 256
         of Command.Inc:    registers[ins.reg1] = (registers[ins.reg1] + ins.amount) mod 256
-        of Command.Out:    result &= chr(registers[ins.reg1])
+        of Command.Out:    result &= chr(registers[ins.reg1]).repeat(ins.amount)
         of Command.In:
             if input.len == 0:
                 return result & "\n(end of input)"
             registers[ins.reg1] = input.pop.ord
         i += 1
 
-func getOptimalBrainfuck(program: var Program): (seq[string], seq[int]) =
+func getOptimalPerms(program: var Program, target=0): seq[seq[int]] =
     var perm = toSeq(0..<program.regNames.len)
     var minLength = int.high
-    var minPerm: seq[int]
+    var minPerms: seq[seq[int]]
     var permCount = 0
-    const maxPerms = 19_958_400 # 11!/2
+    const maxPerms = 100 #19_958_400 # 11!/2
     for _ in 1..maxPerms:
         let length = getLength(program, perm)
-        if length < minLength:
-            minLength = length
-            minPerm = perm        
+        if target == 0 or length == target:
+            if length < minLength:
+                minPerms = newSeq[seq[int]]()    
+                minLength = length
+            if length == minLength:
+                minPerms &= perm
         if (not perm.nextPermutation) or 2*perm[0] > program.regNames.len: break
-    return (getBrainfuck(program, minPerm), minPerm)
+    return minPerms
 
-proc compile(source:string, input="", golf=false) =
+proc compile(source:string, input="", golf=false, target=0) =
   var lines = source.strip.splitLines
   var program = toByteCode(lines)
-  let (bfLines, perm) = program.getOptimalBrainfuck
-  var registers = toSeq(0..<perm.len).mapIt(perm.find it).mapIt(program.regNames[it])
-  let freeMove = registers.find(program.regNames[0])
-  registers = registers.mapIt(it.align(3))
-  let bf = bfLines.join
-  echo "Length: ", $bf.len
-  echo "Memory layout: ", registers.join(" ")
-  echo "               ", toSeq(0..<registers.len).mapIt(($(it - freeMove)).align(registers[it].len)).join(" ")
-  echo "Golfed: ", bf
+  let perms = program.getOptimalPerms(target)
+  for perm in perms:
+      var perm = perm
+      let bfLines = getBrainfuck(program, perm)
+      var registers = toSeq(0..<perm.len).mapIt(perm.find it).mapIt(program.regNames[it])
+      let freeMove = registers.find(program.regNames[0])
+      registers = registers.mapIt(it.align(3))
+      let bf = bfLines.join
+      echo "Length: ", $bf.len
+      echo "Memory layout: ", registers.join(" ")
+      echo "               ", toSeq(0..<registers.len).mapIt(($(it - freeMove)).align(registers[it].len)).join(" ")
+      echo "Golfed: ", bf
   let output = interpret(program, input)
   if output != "":
     echo "Output:"
     echo output
   let maxlen = lines.mapIt(it.len).max
+  var perm = perms[0]
+  let bfLines = getBrainfuck(program, perm)
   for i in 0..<lines.len:
     echo lines[i].alignLeft(maxlen + 1), bfLines[i]
 
@@ -212,5 +235,4 @@ while A
     out NL
 end
 """
-
 compile(code, "37")
