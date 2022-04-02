@@ -41,23 +41,19 @@ func getMemoryTokens(w: seq[string]): seq[string] =
             x = x[0..^2]
         result &= x & close
 
-iterator permutations(n:int, halve=false): seq[int] =
+iterator permutations(n:int): seq[int] =
     var perm = toSeq(0..<n)
-    var limit = math.fac n
-    if halve: limit = limit div 2
-    for _ in 1..limit:
+    while true:
         yield perm
         if not perm.nextPermutation: break
 
-func countPermutations(cons: MemoryConstraint, halve=true): float =
+func countPermutations(cons: MemoryConstraint): float =
     if cons.sons.len == 0: return 1.0
     result = 1.0
     for i,son in cons.sons:
-        result *= countPermutations(son, false)
+        result *= countPermutations(son)
         if cons.permute:
             result *= float(1+i)
-    if halve:
-        result /= 2.0
             
 
 func invert(perm: seq[int]): seq[int] =
@@ -65,11 +61,11 @@ func invert(perm: seq[int]): seq[int] =
     for i,x in perm:
         result[x] = i
 
-func getPermutations(cons: MemoryConstraint, halve=true): seq[seq[int]] =
+func getPermutations(cons: MemoryConstraint): seq[seq[int]] =
     if cons.sons.len == 0: return @[@[cons.register]]
-    var partialPerms = cons.sons.mapIt(it.getPermutations false)
+    var partialPerms = cons.sons.map getPermutations
     var result: seq[seq[int]]
-    for pi in permutations(cons.sons.len, halve):
+    for pi in permutations cons.sons.len:
         proc recurse(i: int, prefix: seq[int]) =
             if i == cons.sons.len:
                 result &= prefix
@@ -243,10 +239,10 @@ proc compile(source:string, input="") =
   var program = toByteCode(lines)
   echo program.memoryContraints
   let permCount = program.memoryContraints.countPermutations
-  if permCount > 1814400.0:
+  if permCount > 3628800.0:
     echo "Permutation count too high. Turning permutations off. Constraint the memory layout using the memory command."
     program.memoryContraints = MemoryConstraint(sons: toSeq(0..<program.regNames.len).mapIt(MemoryConstraint(register: it)))
-  echo "Permutation count: ", permCount.int
+  echo "Permutation count: ", permCount
   let perms = program.getOptimalPerms
   for perm in perms:
       var perm = perm
