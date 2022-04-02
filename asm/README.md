@@ -51,7 +51,7 @@ end
 * `inc register [amount=1]` - goes to the cell `register` and incrementsit by the given amount
 * `out register [amount=1]` - goes to the cell `register` and outputs `amount` times
 * `in register` - goes to the cell `register` and gets input
-* `set register dummy c` - goes to the cell `register` and sets it to the constant `c` assuming both registers `register`and `dummy` are zero
+* `set register dummy c` - goes to the cell `register` and sets it to the constant `c` (either a character or a decimal value 15..241) assuming both registers `register`and `dummy` are zero
 * `while register` - goes to the cell `register` and starts a loop
 * `end` - goes to the`register` cell of the matching `while` command and ends a loop
 * `repeat reg1 reg2` - stars a nondestructive loop of length `reg2`. Assumes `reg1` starts at zero and doesn't change inside the loop
@@ -83,6 +83,9 @@ while reg1
     inc reg2
 end
 ```
+* `memory layout` - constraints the memory layout. This serves two purposes. First, it reduces the search space which is neccessary when more than 10 variables are used (7 in the online version). Second, it is sometimes neccesary when using the `bf` command to force certain registers to be in specific relative positions. The layout is either a single register name, a list of layouts (surronded by `(`, `)` and space separated) or a set of layouts (same, but surrounded by `{`, `}`).
+* `hint reg` - doesn't produce any brainfuck, but tells the compiler where the pointer is supposed to be located (this is relevant after the `bf` command if the compiler cannot infer the position of the pointer).
+* `place reg text` - assuming all the relevant cells are empty, places the given string on the tape. Characters are interleaved with null cells.
 
 
 All registers that appear anywhere in the code are given a position on the tape. The layout minimizing the brainfuck code length is chosen. A sequence of `inc`, `dec` and at most one `in`/`out` is always executed in an optimal order.
@@ -93,7 +96,7 @@ If the program gets no input, it is interpreted, assumptions on dummy registers 
 
 ## Online script
 
-You can run this program [online](https://play.nim-lang.org/#ix=3TOc).
+You can run this program [online](https://play.nim-lang.org/#ix=3U5I).
 
 ## References
 The list of constants this program used is extracted from [Esolangs wiki](https://esolangs.org/wiki/Brainfuck_constants).

@@ -1,40 +1,126 @@
 include prelude
 import algorithm, math
 
-const constants = split " + ++ +++ ++++ +++++ ++++++ +++++++ ++++++++ +++++++++ ++++++++++ +++++++++++ ++++++++++++ +++++++++++++ ++++++++++++++ +++[A+++++B-]A ++++[A++++B-]A ++++[A++++B-]A+ +++[A++++++B-]A +++[A++++++B-]A+ ++++[A+++++B-]A +++[A+++++++B-]A +++[A+++++++B-]A+ ++++[A++++++B-]A- ++++[A++++++B-]A +++++[A+++++B-]A +++++[A+++++B-]A+ +++[A+++++++++B-]A ++++[A+++++++B-]A ++++[A+++++++B-]A+ +++++[A++++++B-]A +++++[A++++++B-]A+ ++++[A++++++++B-]A ++++[A++++++++B-]A+ --[A--B+++++++]A-- --[A--B+++++++]A- --[A--B+++++++]A ---[A+B+++++++]A ---[A+B+++++++]A+ ---[A+B+++++++]A++ --[A+B++++++]A--- --[A+B++++++]A-- --[A+B++++++]A- --[A+B++++++]A --[A+B++++++]A+ --[A+B++++++]A++ --[A+B++++++]A+++ -[A+B-----]A---- -[A+B-----]A--- -[A+B-----]A-- -[A+B-----]A- -[A+B-----]A -[A+B-----]A+ -[A+B-----]A++ -[A+B-----]A+++ -[A+B-----]A++++ -[A+B-----]A+++++ -[A+B+++++++++]A -[A+B+++++++++]A+ ----[A+B----]A---- ----[A+B----]A--- ----[A+B----]A-- ----[A+B----]A- ----[A+B----]A ----[A+B----]A+ ----[A+B----]A++ ----[A+B----]A+++ ----[A---B----]A ----[A---B----]A+ ----[A---B----]A++ -[A+B-------]A--- -[A+B-------]A-- -[A+B-------]A- -[A+B-------]A -[A+B-------]A+ -[A+B-------]A++ -[A+B-------]A+++ -[A+B---]A-------- -[A+B---]A------- -[A+B---]A------ -[A+B---]A----- -[A+B---]A---- -[A+B---]A--- -[A+B---]A-- -[A+B---]A- -[A+B---]A -[A+B---]A+ -[A+B---]A++ -[A+B---]A+++ -[A+B---]A++++ -[A+B---]A+++++ -[A+B---]A++++++ -[A+B---]A+++++++ -[A+B---]A++++++++ -[A+B---]A+++++++++ -[A++B-----]A------- -[A++B-----]A------ -[A++B-----]A----- -[A++B-----]A---- -[A++B-----]A--- -[A++B-----]A-- -[A++B-----]A- -[A++B-----]A -[A++B-----]A+ -[A++B-----]A++ -[A++B-----]A+++ -[A++B-----]A++++ -[A++B-----]A+++++ -[A--B-------]A-- -[A--B-------]A- -[A--B-------]A -[A--B-------]A+ -[A--B-------]A++ -[A++B+++++++++]A- -[A++B+++++++++]A -[A++B+++++++++]A+ --------[A+++B--]A ----[A+++++B--]A- ----[A+++++B--]A ------[A+++B--]A ----[A+++B--]A-- ----[A+++B--]A- ----[A+++B--]A --[A+B--]A---- --[A+B--]A--- --[A+B--]A-- --[A+B--]A- --[A+B--]A --[A-B--]A- --[A-B--]A --[A-B--]A+ --[A-B--]A++ --[A-B--]A+++ --[A-B--]A++++ ----[A---B--]A ----[A---B--]A+ ----[A---B--]A++ ------[A---B--]A ----[A-----B--]A ----[A-----B--]A+ --------[A---B--]A -[A--B+++++++++]A- -[A--B+++++++++]A -[A--B+++++++++]A+ -[A++B-------]A-- -[A++B-------]A- -[A++B-------]A -[A++B-------]A+ -[A++B-------]A++ -[A--B-----]A----- -[A--B-----]A---- -[A--B-----]A--- -[A--B-----]A-- -[A--B-----]A- -[A--B-----]A -[A--B-----]A+ -[A--B-----]A++ -[A--B-----]A+++ -[A--B-----]A++++ -[A--B-----]A+++++ -[A--B-----]A++++++ -[A--B-----]A+++++++ -[A-B---]A--------- -[A-B---]A-------- -[A-B---]A------- -[A-B---]A------ -[A-B---]A----- -[A-B---]A---- -[A-B---]A--- -[A-B---]A-- -[A-B---]A- -[A-B---]A -[A-B---]A+ -[A-B---]A++ -[A-B---]A+++ -[A-B---]A++++ -[A-B---]A+++++ -[A-B---]A++++++ -[A-B---]A+++++++ -[A-B---]A++++++++ -[A-B-------]A--- -[A-B-------]A-- -[A-B-------]A- -[A-B-------]A -[A-B-------]A+ -[A-B-------]A++ -[A-B-------]A+++ ----[A+++B----]A-- ----[A+++B----]A- ----[A+++B----]A ----[A-B----]A--- ----[A-B----]A-- ----[A-B----]A- ----[A-B----]A ----[A-B----]A+ ----[A-B----]A++ ----[A-B----]A+++ ----[A-B----]A++++ -[A-B+++++++++]A- -[A-B+++++++++]A -[A-B-----]A----- -[A-B-----]A---- -[A-B-----]A--- -[A-B-----]A-- -[A-B-----]A- -[A-B-----]A -[A-B-----]A+ -[A-B-----]A++ -[A-B-----]A+++ -[A-B-----]A++++ --[A-B++++++]A--- --[A-B++++++]A-- --[A-B++++++]A- --[A-B++++++]A --[A-B++++++]A+ --[A-B++++++]A++ --[A-B++++++]A+++ ---[A-B+++++++]A-- ---[A-B+++++++]A- ---[A-B+++++++]A --[A++B+++++++]A --[A++B+++++++]A+ --[A++B+++++++]A++ ----[A--------B+]A- ----[A--------B+]A -----[A------B+]A- -----[A------B+]A ----[A-------B+]A- ----[A-------B+]A ---[A---------B+]A -----[A-----B+]A- -----[A-----B+]A ----[A------B+]A ----[A------B+]A+ ---[A-------B+]A- ---[A-------B+]A ----[A-----B+]A ---[A------B+]A- ---[A------B+]A ----[A----B+]A- ----[A----B+]A ---[A-----B+]A -------------- ------------- ------------ ----------- ---------- --------- -------- ------- ------ ----- ---- --- -- -"
+const constants = split "A A+ A++ A+++ A++++ A+++++ A++++++ A+++++++ A++++++++ A+++++++++ A++++++++++ A+++++++++++ A++++++++++++ A+++++++++++++ A++++++++++++++ +++[A+++++B-]A ++++[A++++B-]A ++++[A++++B-]A+ +++[A++++++B-]A +++[A++++++B-]A+ ++++[A+++++B-]A +++[A+++++++B-]A +++[A+++++++B-]A+ ++++[A++++++B-]A- ++++[A++++++B-]A +++++[A+++++B-]A +++++[A+++++B-]A+ +++[A+++++++++B-]A ++++[A+++++++B-]A ++++[A+++++++B-]A+ +++++[A++++++B-]A +++++[A++++++B-]A+ ++++[A++++++++B-]A ++++[A++++++++B-]A+ --[A--B+++++++]A-- --[A--B+++++++]A- --[A--B+++++++]A ---[A+B+++++++]A ---[A+B+++++++]A+ ---[A+B+++++++]A++ --[A+B++++++]A--- --[A+B++++++]A-- --[A+B++++++]A- --[A+B++++++]A --[A+B++++++]A+ --[A+B++++++]A++ --[A+B++++++]A+++ -[A+B-----]A---- -[A+B-----]A--- -[A+B-----]A-- -[A+B-----]A- -[A+B-----]A -[A+B-----]A+ -[A+B-----]A++ -[A+B-----]A+++ -[A+B-----]A++++ -[A+B-----]A+++++ -[A+B+++++++++]A -[A+B+++++++++]A+ ----[A+B----]A---- ----[A+B----]A--- ----[A+B----]A-- ----[A+B----]A- ----[A+B----]A ----[A+B----]A+ ----[A+B----]A++ ----[A+B----]A+++ ----[A---B----]A ----[A---B----]A+ ----[A---B----]A++ -[A+B-------]A--- -[A+B-------]A-- -[A+B-------]A- -[A+B-------]A -[A+B-------]A+ -[A+B-------]A++ -[A+B-------]A+++ -[A+B---]A-------- -[A+B---]A------- -[A+B---]A------ -[A+B---]A----- -[A+B---]A---- -[A+B---]A--- -[A+B---]A-- -[A+B---]A- -[A+B---]A -[A+B---]A+ -[A+B---]A++ -[A+B---]A+++ -[A+B---]A++++ -[A+B---]A+++++ -[A+B---]A++++++ -[A+B---]A+++++++ -[A+B---]A++++++++ -[A+B---]A+++++++++ -[A++B-----]A------- -[A++B-----]A------ -[A++B-----]A----- -[A++B-----]A---- -[A++B-----]A--- -[A++B-----]A-- -[A++B-----]A- -[A++B-----]A -[A++B-----]A+ -[A++B-----]A++ -[A++B-----]A+++ -[A++B-----]A++++ -[A++B-----]A+++++ -[A--B-------]A-- -[A--B-------]A- -[A--B-------]A -[A--B-------]A+ -[A--B-------]A++ -[A++B+++++++++]A- -[A++B+++++++++]A -[A++B+++++++++]A+ --------[A+++B--]A ----[A+++++B--]A- ----[A+++++B--]A ------[A+++B--]A ----[A+++B--]A-- ----[A+++B--]A- ----[A+++B--]A --[A+B--]A---- --[A+B--]A--- --[A+B--]A-- --[A+B--]A- --[A+B--]A --[A-B--]A- --[A-B--]A --[A-B--]A+ --[A-B--]A++ --[A-B--]A+++ --[A-B--]A++++ ----[A---B--]A ----[A---B--]A+ ----[A---B--]A++ ------[A---B--]A ----[A-----B--]A ----[A-----B--]A+ --------[A---B--]A -[A--B+++++++++]A- -[A--B+++++++++]A -[A--B+++++++++]A+ -[A++B-------]A-- -[A++B-------]A- -[A++B-------]A -[A++B-------]A+ -[A++B-------]A++ -[A--B-----]A----- -[A--B-----]A---- -[A--B-----]A--- -[A--B-----]A-- -[A--B-----]A- -[A--B-----]A -[A--B-----]A+ -[A--B-----]A++ -[A--B-----]A+++ -[A--B-----]A++++ -[A--B-----]A+++++ -[A--B-----]A++++++ -[A--B-----]A+++++++ -[A-B---]A--------- -[A-B---]A-------- -[A-B---]A------- -[A-B---]A------ -[A-B---]A----- -[A-B---]A---- -[A-B---]A--- -[A-B---]A-- -[A-B---]A- -[A-B---]A -[A-B---]A+ -[A-B---]A++ -[A-B---]A+++ -[A-B---]A++++ -[A-B---]A+++++ -[A-B---]A++++++ -[A-B---]A+++++++ -[A-B---]A++++++++ -[A-B-------]A--- -[A-B-------]A-- -[A-B-------]A- -[A-B-------]A -[A-B-------]A+ -[A-B-------]A++ -[A-B-------]A+++ ----[A+++B----]A-- ----[A+++B----]A- ----[A+++B----]A ----[A-B----]A--- ----[A-B----]A-- ----[A-B----]A- ----[A-B----]A ----[A-B----]A+ ----[A-B----]A++ ----[A-B----]A+++ ----[A-B----]A++++ -[A-B+++++++++]A- -[A-B+++++++++]A -[A-B-----]A----- -[A-B-----]A---- -[A-B-----]A--- -[A-B-----]A-- -[A-B-----]A- -[A-B-----]A -[A-B-----]A+ -[A-B-----]A++ -[A-B-----]A+++ -[A-B-----]A++++ --[A-B++++++]A--- --[A-B++++++]A-- --[A-B++++++]A- --[A-B++++++]A --[A-B++++++]A+ --[A-B++++++]A++ --[A-B++++++]A+++ ---[A-B+++++++]A-- ---[A-B+++++++]A- ---[A-B+++++++]A --[A++B+++++++]A --[A++B+++++++]A+ --[A++B+++++++]A++ ----[A--------B+]A- ----[A--------B+]A -----[A------B+]A- -----[A------B+]A ----[A-------B+]A- ----[A-------B+]A ---[A---------B+]A -----[A-----B+]A- -----[A-----B+]A ----[A------B+]A ----[A------B+]A+ ---[A-------B+]A- ---[A-------B+]A ----[A-----B+]A ---[A------B+]A- ---[A------B+]A ----[A----B+]A- ----[A----B+]A ---[A-----B+]A A-------------- A------------- A------------ A----------- A---------- A--------- A-------- A------- A------ A----- A---- A--- A-- A-"
 
-type Command = enum Inc, Dec, Clear, Out, In, Set, While, EndWhile, Repeat, Comment, EndRepeat, Move
+type Command = enum Inc, Dec, Clear, Out, In, Set, While, EndWhile, Repeat, Comment, EndRepeat, Move, Bf, Hint, Memory, Place
+type MemoryConstraint = ref object
+    permute: bool
+    register: int
+    sons: seq[MemoryConstraint]
 type Instruction = object
   kind: Command
   reg1, reg2, amount: int
+  text: string
 type Program = object
   instructions: seq[Instruction]
+  memoryContraints: MemoryConstraint
   regNames: seq[string]
+  
+func `$`(cons: MemoryConstraint): string =
+    if cons.sons.len == 0: return $cons.register
+    let inner = cons.sons.mapIt($it).join " "
+    if cons.permute:
+        return "{" & inner & "}"
+    return "(" & inner & ")"
 
 func isInOut(ins: Instruction): bool =
     ins.kind == Command.In or ins.kind == Command.Out
 func isDecInc(ins: Instruction): bool =
-    ins.kind == Command.Dec or ins.kind == Command.Inc
+    (ins.kind == Command.Dec or ins.kind == Command.Inc) and ins.amount != 0
+
+func getMemoryTokens(w: seq[string]): seq[string] =
+    for x in w:
+        var x = x
+        while x[0] in "({":
+            result &= $x[0]
+            x = x[1..^1]
+        var close: seq[string]
+        while x[^1] in ")}":
+            close = $x[^1] & close
+            x = x[0..^2]
+        result &= x & close
+
+iterator permutations(n:int): seq[int] =
+    var perm = toSeq(0..<n)
+    while true:
+        yield perm
+        if not perm.nextPermutation: break
+
+func countPermutations(cons: MemoryConstraint): float =
+    if cons.sons.len == 0: return 1.0
+    result = 1.0
+    for i,son in cons.sons:
+        result *= countPermutations son
+        if cons.permute:
+            result *= float(1+i)
+
+func invert(perm: seq[int]): seq[int] =
+    result = newSeq[int](perm.len)
+    for i,x in perm:
+        result[x] = i
+
+func getPermutations(cons: MemoryConstraint): seq[seq[int]] =
+    if cons.sons.len == 0: return @[@[cons.register]]
+    var partialPerms = cons.sons.map getPermutations
+    var result: seq[seq[int]]
+    for pi in permutations(cons.sons.len):
+        proc recurse(i: int, prefix: seq[int]) =
+            if i == cons.sons.len:
+                result &= prefix
+            else:
+                for x in partialPerms[pi[i]]:
+                    recurse(i+1, prefix & x)
+        recurse(0, @[])  
+        if not cons.permute: return result
+    return result
   
 func toByteCode(source: seq[string]): Program =
   var registers: Table[string, int]
   var regNames: seq[string]
-  proc getReg(register: string): int =
+  var memory = MemoryConstraint(permute: true)
+  proc getReg(register: string, addToMemory=true): int =
     if not registers.hasKey(register):
       registers[register] = registers.len
       regNames &= register
+      if addToMemory:
+        memory.sons &= MemoryConstraint(register: registers[register])
     return registers[register]
   var stack: seq[Instruction]
   for i, line in source:
     let w = line.strip.split
     case w[0]
+    of "memory":
+        if i != 0:
+            raise newException(ValueError, "The memory command must be on line 1.")
+        else:
+            var tokens = getMemoryTokens(w[1..^1])
+            var stack = @[memory]
+            for token in tokens:
+                if token in ["(","{"]:
+                    stack &= MemoryConstraint(permute: token == "{")
+                    stack[^2].sons &= stack[^1]
+                elif token == ")":
+                    if stack.pop.permute:
+                        raise newException(ValueError, "Unmatched parenthesis.")
+                elif token == "}":
+                    if not stack.pop.permute:
+                        raise newException(ValueError, "Unmatched parenthesis.")
+                else:
+                    stack[^1].sons &= MemoryConstraint(register: getReg(token, false))
+            if stack.len != 1:
+                raise newException(ValueError, "Unmatched parenthesis.")
+                        
+            result.instructions &= Instruction(kind: Command.Comment)
     of "clear": result.instructions &= Instruction(kind: Command.Clear, reg1: getReg(w[1]))
     of "dec":   result.instructions &= Instruction(kind: Command.Dec, reg1: getReg(w[1]), amount: (try:w[2].parseInt except: 1))
     of "inc":   result.instructions &= Instruction(kind: Command.Inc, reg1: getReg(w[1]), amount: (try:w[2].parseInt except: 1))
     of "out":   result.instructions &= Instruction(kind: Command.Out, reg1: getReg(w[1]), amount: (try:w[2].parseInt except: 1))
     of "in":    result.instructions &= Instruction(kind: Command.In, reg1: getReg(w[1]), amount: (try:w[2].parseInt except: 1))
     of "set":
-        if w[3].parseInt in 15..241:
+        if w[3].len == 1:
+            result.instructions &= Instruction(kind: Command.Set, reg1: getReg(w[1]), reg2: getReg(w[2]), amount: w[3][0].ord)
+        elif w[3].parseInt in 15..241:
             result.instructions &= Instruction(kind: Command.Set, reg1: getReg(w[1]), reg2: getReg(w[2]), amount: w[3].parseInt)
         else:
             raise newException(ValueError, "The amount to be set must be in 15..241.")
@@ -46,7 +132,7 @@ func toByteCode(source: seq[string]): Program =
         try:
             start = stack.pop
         except:
-            raise newException(ValueError, "Unexpected end on line " & $i & ". No loop blocks still open.")
+            raise newException(ValueError, "Unexpected end on line " & $(i+1) & ". No loop blocks still open.")
         if start.kind == Command.While:
             result.instructions &= Instruction(kind: Command.EndWhile, reg1: start.reg1)
         else:
@@ -56,10 +142,17 @@ func toByteCode(source: seq[string]): Program =
         result.instructions &= stack[^1]
     of "move":
         result.instructions &= Instruction(kind: Command.Move, reg1: getReg(w[1]), reg2: getReg(w[2]))
+    of "bf":
+        result.instructions &= Instruction(kind: Command.Bf, text: w[1])
+    of "hint":
+        result.instructions &= Instruction(kind: Command.Hint, reg1: getReg(w[1]))
+    of "place":
+        result.instructions &= Instruction(kind: Command.Place, reg1: getReg(w[1]), text: w[2..^1].join.unescape)
     else:
         result.instructions &= Instruction(kind: Command.Comment)
   if stack.len > 0:
     raise newException(ValueError, "Unexpected EOF. " & $stack.len & " loop blocks still open.")
+  result.memoryContraints = memory
   result.regNames = regNames
 
 func getBrainfuck(program: var Program, perm: var seq[int]): seq[string] =
@@ -118,6 +211,10 @@ func getBrainfuck(program: var Program, perm: var seq[int]): seq[string] =
             of Command.Inc: goto(ins.reg1, perm) & "+".repeat(ins.amount)
             of Command.Out: goto(ins.reg1, perm) & ".".repeat(ins.amount)
             of Command.In: goto(ins.reg1, perm) & ","
+            of Command.Bf: ins.text
+            of Command.Hint: (point = ins.reg1; "")
+            of Command.Place: goto(ins.reg1, perm) & ins.text.mapIt(constants[it.ord].multireplace(("A",">"),("B","<"))).join(">") & ">"
+            of Command.Memory: ""
             )
     discard goto(point, perm)
     return resultt
@@ -125,85 +222,29 @@ func getBrainfuck(program: var Program, perm: var seq[int]): seq[string] =
 func getLength(program: var Program, perm: var seq[int]): int =
     return getBrainfuck(program, perm).mapIt(it.len).sum #TODO replace this with faster calculation
 
-func interpret(program: Program, input=""): string =
-    var input = input.reversed
-    var program = program
-    var stack: seq[int]
-    for i,p in program.instructions:
-        if p.kind == Command.While or p.kind == Command.Repeat:
-            stack &= i
-        elif p.kind == Command.EndWhile or p.kind == Command.EndRepeat:
-            let w = stack.pop
-            program.instructions[w].amount = i # the field amount is used as instruction pointer instead
-            program.instructions[i].amount = w
-    var i = 0
-    var registers = newSeq[int](program.instructions.len)
-    while i < program.instructions.len:
-        #debugEcho (i, registers, input)
-        let ins = program.instructions[i]
-        case ins.kind
-        of Command.Comment: discard
-        of Command.EndWhile:
-            if registers[ins.reg1] > 0:
-                i = ins.amount
-        of Command.EndRepeat:  
-            registers[ins.reg1] = (registers[ins.reg1] + 1) mod 256
-            registers[ins.reg2] = (registers[ins.reg2] + 255) mod 256
-            if registers[ins.reg2] > 0:      
-                i = ins.amount
-            else:
-                registers[ins.reg2] = registers[ins.reg1]
-                registers[ins.reg1] = 0
-        of Command.Set:
-            if registers[ins.reg2] != 0:
-                raise newException(ValueError, "Register " & program.regNames[ins.reg2] & " is nonzero on line " & $i)
-            registers[ins.reg1] = ins.amount
-        of Command.Move:
-            registers[ins.reg2] += registers[ins.reg1]
-            registers[ins.reg1] = 0
-        of Command.While:
-            if registers[ins.reg1] == 0:
-                i = ins.amount-1
-        of Command.Repeat:
-            if registers[ins.reg1] != 0:
-                raise newException(ValueError, "Register " & program.regNames[ins.reg2] & " is nonzero on line " & $i)
-            if registers[ins.reg2] == 0:
-                i = ins.amount                
-        of Command.Clear:  registers[ins.reg1] = 0
-        of Command.Dec:    registers[ins.reg1] = (registers[ins.reg1]+256-ins.amount) mod 256
-        of Command.Inc:    registers[ins.reg1] = (registers[ins.reg1] + ins.amount) mod 256
-        of Command.Out:    result &= chr(registers[ins.reg1]).repeat(ins.amount)
-        of Command.In:
-            if input.len == 0:
-                return result & "\n(end of input)"
-            registers[ins.reg1] = input.pop.ord
-        i += 1
-
-func getOptimalPerms(program: var Program, target=0): seq[seq[int]] =
-    var perm = toSeq(0..<program.regNames.len)
+func getOptimalPerms(program: var Program): seq[seq[int]] =
     var minLength = int.high
     var minPerms: seq[seq[int]]
-    var permCount = 0
-    const maxPerms = 19_958_400 # 11!/2
-    for _ in 1..maxPerms:
+    for perm in program.memoryContraints.getPermutations.map invert:
+        var perm = perm
         let length = getLength(program, perm)
-        if target == 0 or length == target:
-            if length < minLength:
-                minPerms = newSeq[seq[int]]()    
-                minLength = length
-            if length == minLength:
-                minPerms &= perm
-        if (not perm.nextPermutation) or 2*perm[0] > program.regNames.len: break
+        if length < minLength:
+            minPerms = newSeq[seq[int]]()    
+            minLength = length
+        if length == minLength:
+            minPerms &= perm
     return minPerms
 
-proc compile(source:string, input="", golf=false, target=0) =
+proc compile(source:string, input="") =
   var lines = source.strip.splitLines
   var program = toByteCode(lines)
-  let output = interpret(program, input)
-  if output != "":
-    echo "Output:"
-    echo output
-  let perms = program.getOptimalPerms(target)
+  echo program
+  let permCount = program.memoryContraints.countPermutations
+  if permCount > 3628800.0:
+    echo "Permutation count too high. Turning permutations off. Constraint the memory layout using the memory command."
+    program.memoryContraints = MemoryConstraint(sons: toSeq(0..<program.regNames.len).mapIt(MemoryConstraint(register: it)))
+  echo "Permutation count: ", permCount.int
+  let perms = program.getOptimalPerms
   for perm in perms:
       var perm = perm
       let bfLines = getBrainfuck(program, perm)
@@ -219,10 +260,16 @@ proc compile(source:string, input="", golf=false, target=0) =
   var perm = perms[0]
   let bfLines = getBrainfuck(program, perm)
   for i in 0..<lines.len:
-    echo lines[i].alignLeft(maxlen + 1), bfLines[i]
+    let bf = if program.instructions[i].kind != Command.Bf: bfLines[i] else: ""
+    echo lines[i].alignLeft(maxlen + 1), bf
 
-
-var code = """
-
-"""
-compile(code, "37")
+var code, input: string
+try:
+    code = 1.paramStr.readFile
+    try:
+        input = 2.paramStr.readFile
+    except: discard
+except:
+    echo "Provide source file and optionally input file in cmd args."
+if code != "":
+    compile(code, input)
