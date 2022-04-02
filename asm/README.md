@@ -83,6 +83,7 @@ while reg1
     inc reg2
 end
 ```
+* `bf code` - inserts the given brainfuck code into the output
 * `memory layout` - constraints the memory layout. This serves two purposes. First, it reduces the search space which is neccessary when more than 10 variables are used (7 in the online version). Second, it is sometimes neccesary when using the `bf` command to force certain registers to be in specific relative positions. The layout is either a single register name, a list of layouts (surronded by `(`, `)` and space separated) or a set of layouts (same, but surrounded by `{`, `}`).
 * `hint reg` - doesn't produce any brainfuck, but tells the compiler where the pointer is supposed to be located (this is relevant after the `bf` command if the compiler cannot infer the position of the pointer).
 * `place reg text` - assuming all the relevant cells are empty, places the given string on the tape. Characters are interleaved with null cells.
