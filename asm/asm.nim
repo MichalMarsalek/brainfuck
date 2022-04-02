@@ -3,7 +3,7 @@ import algorithm, math
 
 const constants = split "A A+ A++ A+++ A++++ A+++++ A++++++ A+++++++ A++++++++ A+++++++++ A++++++++++ A+++++++++++ A++++++++++++ A+++++++++++++ A++++++++++++++ +++[A+++++B-]A ++++[A++++B-]A ++++[A++++B-]A+ +++[A++++++B-]A +++[A++++++B-]A+ ++++[A+++++B-]A +++[A+++++++B-]A +++[A+++++++B-]A+ ++++[A++++++B-]A- ++++[A++++++B-]A +++++[A+++++B-]A +++++[A+++++B-]A+ +++[A+++++++++B-]A ++++[A+++++++B-]A ++++[A+++++++B-]A+ +++++[A++++++B-]A +++++[A++++++B-]A+ ++++[A++++++++B-]A ++++[A++++++++B-]A+ --[A--B+++++++]A-- --[A--B+++++++]A- --[A--B+++++++]A ---[A+B+++++++]A ---[A+B+++++++]A+ ---[A+B+++++++]A++ --[A+B++++++]A--- --[A+B++++++]A-- --[A+B++++++]A- --[A+B++++++]A --[A+B++++++]A+ --[A+B++++++]A++ --[A+B++++++]A+++ -[A+B-----]A---- -[A+B-----]A--- -[A+B-----]A-- -[A+B-----]A- -[A+B-----]A -[A+B-----]A+ -[A+B-----]A++ -[A+B-----]A+++ -[A+B-----]A++++ -[A+B-----]A+++++ -[A+B+++++++++]A -[A+B+++++++++]A+ ----[A+B----]A---- ----[A+B----]A--- ----[A+B----]A-- ----[A+B----]A- ----[A+B----]A ----[A+B----]A+ ----[A+B----]A++ ----[A+B----]A+++ ----[A---B----]A ----[A---B----]A+ ----[A---B----]A++ -[A+B-------]A--- -[A+B-------]A-- -[A+B-------]A- -[A+B-------]A -[A+B-------]A+ -[A+B-------]A++ -[A+B-------]A+++ -[A+B---]A-------- -[A+B---]A------- -[A+B---]A------ -[A+B---]A----- -[A+B---]A---- -[A+B---]A--- -[A+B---]A-- -[A+B---]A- -[A+B---]A -[A+B---]A+ -[A+B---]A++ -[A+B---]A+++ -[A+B---]A++++ -[A+B---]A+++++ -[A+B---]A++++++ -[A+B---]A+++++++ -[A+B---]A++++++++ -[A+B---]A+++++++++ -[A++B-----]A------- -[A++B-----]A------ -[A++B-----]A----- -[A++B-----]A---- -[A++B-----]A--- -[A++B-----]A-- -[A++B-----]A- -[A++B-----]A -[A++B-----]A+ -[A++B-----]A++ -[A++B-----]A+++ -[A++B-----]A++++ -[A++B-----]A+++++ -[A--B-------]A-- -[A--B-------]A- -[A--B-------]A -[A--B-------]A+ -[A--B-------]A++ -[A++B+++++++++]A- -[A++B+++++++++]A -[A++B+++++++++]A+ --------[A+++B--]A ----[A+++++B--]A- ----[A+++++B--]A ------[A+++B--]A ----[A+++B--]A-- ----[A+++B--]A- ----[A+++B--]A --[A+B--]A---- --[A+B--]A--- --[A+B--]A-- --[A+B--]A- --[A+B--]A --[A-B--]A- --[A-B--]A --[A-B--]A+ --[A-B--]A++ --[A-B--]A+++ --[A-B--]A++++ ----[A---B--]A ----[A---B--]A+ ----[A---B--]A++ ------[A---B--]A ----[A-----B--]A ----[A-----B--]A+ --------[A---B--]A -[A--B+++++++++]A- -[A--B+++++++++]A -[A--B+++++++++]A+ -[A++B-------]A-- -[A++B-------]A- -[A++B-------]A -[A++B-------]A+ -[A++B-------]A++ -[A--B-----]A----- -[A--B-----]A---- -[A--B-----]A--- -[A--B-----]A-- -[A--B-----]A- -[A--B-----]A -[A--B-----]A+ -[A--B-----]A++ -[A--B-----]A+++ -[A--B-----]A++++ -[A--B-----]A+++++ -[A--B-----]A++++++ -[A--B-----]A+++++++ -[A-B---]A--------- -[A-B---]A-------- -[A-B---]A------- -[A-B---]A------ -[A-B---]A----- -[A-B---]A---- -[A-B---]A--- -[A-B---]A-- -[A-B---]A- -[A-B---]A -[A-B---]A+ -[A-B---]A++ -[A-B---]A+++ -[A-B---]A++++ -[A-B---]A+++++ -[A-B---]A++++++ -[A-B---]A+++++++ -[A-B---]A++++++++ -[A-B-------]A--- -[A-B-------]A-- -[A-B-------]A- -[A-B-------]A -[A-B-------]A+ -[A-B-------]A++ -[A-B-------]A+++ ----[A+++B----]A-- ----[A+++B----]A- ----[A+++B----]A ----[A-B----]A--- ----[A-B----]A-- ----[A-B----]A- ----[A-B----]A ----[A-B----]A+ ----[A-B----]A++ ----[A-B----]A+++ ----[A-B----]A++++ -[A-B+++++++++]A- -[A-B+++++++++]A -[A-B-----]A----- -[A-B-----]A---- -[A-B-----]A--- -[A-B-----]A-- -[A-B-----]A- -[A-B-----]A -[A-B-----]A+ -[A-B-----]A++ -[A-B-----]A+++ -[A-B-----]A++++ --[A-B++++++]A--- --[A-B++++++]A-- --[A-B++++++]A- --[A-B++++++]A --[A-B++++++]A+ --[A-B++++++]A++ --[A-B++++++]A+++ ---[A-B+++++++]A-- ---[A-B+++++++]A- ---[A-B+++++++]A --[A++B+++++++]A --[A++B+++++++]A+ --[A++B+++++++]A++ ----[A--------B+]A- ----[A--------B+]A -----[A------B+]A- -----[A------B+]A ----[A-------B+]A- ----[A-------B+]A ---[A---------B+]A -----[A-----B+]A- -----[A-----B+]A ----[A------B+]A ----[A------B+]A+ ---[A-------B+]A- ---[A-------B+]A ----[A-----B+]A ---[A------B+]A- ---[A------B+]A ----[A----B+]A- ----[A----B+]A ---[A-----B+]A A-------------- A------------- A------------ A----------- A---------- A--------- A-------- A------- A------ A----- A---- A--- A-- A-"
 
-type Command = enum Inc, Dec, Clear, Out, In, Set, While, EndWhile, Repeat, Comment, EndRepeat, Move, Bf, Hint, Memory, Place
+type Command = enum Inc, Clear, Out, In, Set, While, EndWhile, Repeat, Comment, EndRepeat, Move, Bf, Hint, Memory, Place
 type MemoryConstraint = ref object
     permute: bool
     register: int
@@ -26,8 +26,8 @@ func `$`(cons: MemoryConstraint): string =
 
 func isInOut(ins: Instruction): bool =
     ins.kind == Command.In or ins.kind == Command.Out
-func isDecInc(ins: Instruction): bool =
-    (ins.kind == Command.Dec or ins.kind == Command.Inc) and ins.amount != 0
+func isInc(ins: Instruction): bool =
+    ins.kind == Command.Inc and ins.amount != 0
 
 func getMemoryTokens(w: seq[string]): seq[string] =
     for x in w:
@@ -41,30 +41,35 @@ func getMemoryTokens(w: seq[string]): seq[string] =
             x = x[0..^2]
         result &= x & close
 
-iterator permutations(n:int): seq[int] =
+iterator permutations(n:int, halve=false): seq[int] =
     var perm = toSeq(0..<n)
-    while true:
+    var limit = math.fac n
+    if halve: limit = limit div 2
+    for _ in 1..limit:
         yield perm
         if not perm.nextPermutation: break
 
-func countPermutations(cons: MemoryConstraint): float =
+func countPermutations(cons: MemoryConstraint, halve=true): float =
     if cons.sons.len == 0: return 1.0
     result = 1.0
     for i,son in cons.sons:
-        result *= countPermutations son
+        result *= countPermutations(son, false)
         if cons.permute:
             result *= float(1+i)
+    if halve:
+        result /= 2.0
+            
 
 func invert(perm: seq[int]): seq[int] =
     result = newSeq[int](perm.len)
     for i,x in perm:
         result[x] = i
 
-func getPermutations(cons: MemoryConstraint): seq[seq[int]] =
+func getPermutations(cons: MemoryConstraint, halve=true): seq[seq[int]] =
     if cons.sons.len == 0: return @[@[cons.register]]
-    var partialPerms = cons.sons.map getPermutations
+    var partialPerms = cons.sons.mapIt(it.getPermutations false)
     var result: seq[seq[int]]
-    for pi in permutations(cons.sons.len):
+    for pi in permutations(cons.sons.len, halve):
         proc recurse(i: int, prefix: seq[int]) =
             if i == cons.sons.len:
                 result &= prefix
@@ -72,7 +77,7 @@ func getPermutations(cons: MemoryConstraint): seq[seq[int]] =
                 for x in partialPerms[pi[i]]:
                     recurse(i+1, prefix & x)
         recurse(0, @[])  
-        if not cons.permute: return result
+        if not cons.permute: break
     return result
   
 func toByteCode(source: seq[string]): Program =
@@ -113,7 +118,7 @@ func toByteCode(source: seq[string]): Program =
                         
             result.instructions &= Instruction(kind: Command.Comment)
     of "clear": result.instructions &= Instruction(kind: Command.Clear, reg1: getReg(w[1]))
-    of "dec":   result.instructions &= Instruction(kind: Command.Dec, reg1: getReg(w[1]), amount: (try:w[2].parseInt except: 1))
+    of "dec":   result.instructions &= Instruction(kind: Command.Inc, reg1: getReg(w[1]), amount: 256-(try:w[2].parseInt except: 1))
     of "inc":   result.instructions &= Instruction(kind: Command.Inc, reg1: getReg(w[1]), amount: (try:w[2].parseInt except: 1))
     of "out":   result.instructions &= Instruction(kind: Command.Out, reg1: getReg(w[1]), amount: (try:w[2].parseInt except: 1))
     of "in":    result.instructions &= Instruction(kind: Command.In, reg1: getReg(w[1]), amount: (try:w[2].parseInt except: 1))
@@ -171,15 +176,14 @@ func getBrainfuck(program: var Program, perm: var seq[int]): seq[string] =
     proc goto(reg: int, perm_i: var seq[int]): string =
         var perm_i = perm_i
         if debts.len > 0:
-            if point > reg:
+            if point > perm_i[reg]:
                 debts = debts.sortedByIt(-perm_i[it.reg1])
             else:
                 debts = debts.sortedByIt(perm_i[it.reg1])
             var payback = ""
             for ins in debts:
                 payback &= (case ins.kind
-                of Command.Dec: goto0(ins.reg1, perm_i) & "-".repeat(ins.amount)
-                of Command.Inc: goto0(ins.reg1, perm_i) & "+".repeat(ins.amount)
+                of Command.Inc: goto0(ins.reg1, perm_i) & (if ins.amount < 128: "+".repeat(ins.amount) else: "-".repeat(256-ins.amount))
                 of Command.Out: goto0(ins.reg1, perm_i) & ".".repeat(ins.amount)
                 of Command.In:  goto0(ins.reg1, perm_i) & ","
                 else: "")
@@ -193,7 +197,7 @@ func getBrainfuck(program: var Program, perm: var seq[int]): seq[string] =
             debts &= ins  
             resultt &= ""
             lastDebtLine = i
-        elif ins.isDecInc:
+        elif ins.isInc:
             debts &= ins
             resultt &= ""
             lastDebtLine = i
@@ -206,9 +210,8 @@ func getBrainfuck(program: var Program, perm: var seq[int]): seq[string] =
             of Command.While: goto(ins.reg1, perm) & "["
             of Command.Repeat: goto(ins.reg2, perm)& "["
             of Command.Clear: goto(ins.reg1, perm) & "[-]"
-            of Command.Move: "[" & goto0(ins.reg1, perm) & "-" & goto0(ins.reg2, perm) & "+" & goto0(ins.reg1, perm) & "]"
-            of Command.Dec: goto(ins.reg1, perm) & "-".repeat(ins.amount)
-            of Command.Inc: goto(ins.reg1, perm) & "+".repeat(ins.amount)
+            of Command.Move: goto0(ins.reg1, perm) & "[" & "-" & goto0(ins.reg2, perm) & "+" & goto0(ins.reg1, perm) & "]"
+            of Command.Inc: goto(ins.reg1, perm) & (if ins.amount < 128: "+".repeat(ins.amount) else: "-".repeat(256-ins.amount))
             of Command.Out: goto(ins.reg1, perm) & ".".repeat(ins.amount)
             of Command.In: goto(ins.reg1, perm) & ","
             of Command.Bf: ins.text
@@ -238,9 +241,9 @@ func getOptimalPerms(program: var Program): seq[seq[int]] =
 proc compile(source:string, input="") =
   var lines = source.strip.splitLines
   var program = toByteCode(lines)
-  echo program
+  echo program.memoryContraints
   let permCount = program.memoryContraints.countPermutations
-  if permCount > 3628800.0:
+  if permCount > 1814400.0:
     echo "Permutation count too high. Turning permutations off. Constraint the memory layout using the memory command."
     program.memoryContraints = MemoryConstraint(sons: toSeq(0..<program.regNames.len).mapIt(MemoryConstraint(register: it)))
   echo "Permutation count: ", permCount.int

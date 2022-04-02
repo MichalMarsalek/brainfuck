@@ -97,7 +97,7 @@ If the program gets no input, it is interpreted, assumptions on dummy registers 
 
 ## Online script
 
-You can run this program [online](https://play.nim-lang.org/#ix=3U5I).
+You can run this program [online](https://play.nim-lang.org/#ix=3U6W).
 
 ## References
 The list of constants this program used is extracted from [Esolangs wiki](https://esolangs.org/wiki/Brainfuck_constants).
