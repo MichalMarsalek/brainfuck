@@ -8,10 +8,9 @@ Input to this tools is a list of commands each of which is transformed to some b
 Following program prints a triangle of stars.
 
 ```
-inc rep 10
-inc NL 10
-inc _
-set * _ 42
+init rep 10
+init NL '\n'
+init * '*'
 repeat i rep
     repeat _ i
         out *
@@ -20,10 +19,11 @@ repeat i rep
 end
 ```
 
-The next program takes two inputs A, B as decimal digits and a rectangle A×B made of stars.
+The next program takes two inputs A, B as decimal digits and outputs a rectangle A×B made of stars.
 ```
-set 0 res 48
-set * res 42
+init 0 '0'
+init * '*'
+init NL '\n'
 in A
 in B
 while 0
@@ -34,12 +34,9 @@ end
 while A
     dec A
     repeat _ B
-        inc res
+        out *
     end
-end
-while res
-    dec res
-    out *
+    out NL
 end
 ```
 
