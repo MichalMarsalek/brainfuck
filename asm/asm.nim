@@ -3,7 +3,7 @@ import algorithm, math
 
 const constants = split "A A+ A++ A+++ A++++ A+++++ A++++++ A+++++++ A++++++++ A+++++++++ A++++++++++ A+++++++++++ A++++++++++++ A+++++++++++++ A++++++++++++++ +++[A+++++B-]A ++++[A++++B-]A ++++[A++++B-]A+ +++[A++++++B-]A +++[A++++++B-]A+ ++++[A+++++B-]A +++[A+++++++B-]A +++[A+++++++B-]A+ ++++[A++++++B-]A- ++++[A++++++B-]A +++++[A+++++B-]A +++++[A+++++B-]A+ +++[A+++++++++B-]A ++++[A+++++++B-]A ++++[A+++++++B-]A+ +++++[A++++++B-]A +++++[A++++++B-]A+ ++++[A++++++++B-]A ++++[A++++++++B-]A+ --[A--B+++++++]A-- --[A--B+++++++]A- --[A--B+++++++]A ---[A+B+++++++]A ---[A+B+++++++]A+ ---[A+B+++++++]A++ --[A+B++++++]A--- --[A+B++++++]A-- --[A+B++++++]A- --[A+B++++++]A --[A+B++++++]A+ --[A+B++++++]A++ --[A+B++++++]A+++ -[A+B-----]A---- -[A+B-----]A--- -[A+B-----]A-- -[A+B-----]A- -[A+B-----]A -[A+B-----]A+ -[A+B-----]A++ -[A+B-----]A+++ -[A+B-----]A++++ -[A+B-----]A+++++ -[A+B+++++++++]A -[A+B+++++++++]A+ ----[A+B----]A---- ----[A+B----]A--- ----[A+B----]A-- ----[A+B----]A- ----[A+B----]A ----[A+B----]A+ ----[A+B----]A++ ----[A+B----]A+++ ----[A---B----]A ----[A---B----]A+ ----[A---B----]A++ -[A+B-------]A--- -[A+B-------]A-- -[A+B-------]A- -[A+B-------]A -[A+B-------]A+ -[A+B-------]A++ -[A+B-------]A+++ -[A+B---]A-------- -[A+B---]A------- -[A+B---]A------ -[A+B---]A----- -[A+B---]A---- -[A+B---]A--- -[A+B---]A-- -[A+B---]A- -[A+B---]A -[A+B---]A+ -[A+B---]A++ -[A+B---]A+++ -[A+B---]A++++ -[A+B---]A+++++ -[A+B---]A++++++ -[A+B---]A+++++++ -[A+B---]A++++++++ -[A+B---]A+++++++++ -[A++B-----]A------- -[A++B-----]A------ -[A++B-----]A----- -[A++B-----]A---- -[A++B-----]A--- -[A++B-----]A-- -[A++B-----]A- -[A++B-----]A -[A++B-----]A+ -[A++B-----]A++ -[A++B-----]A+++ -[A++B-----]A++++ -[A++B-----]A+++++ -[A--B-------]A-- -[A--B-------]A- -[A--B-------]A -[A--B-------]A+ -[A--B-------]A++ -[A++B+++++++++]A- -[A++B+++++++++]A -[A++B+++++++++]A+ --------[A+++B--]A ----[A+++++B--]A- ----[A+++++B--]A ------[A+++B--]A ----[A+++B--]A-- ----[A+++B--]A- ----[A+++B--]A --[A+B--]A---- --[A+B--]A--- --[A+B--]A-- --[A+B--]A- --[A+B--]A --[A-B--]A- --[A-B--]A --[A-B--]A+ --[A-B--]A++ --[A-B--]A+++ --[A-B--]A++++ ----[A---B--]A ----[A---B--]A+ ----[A---B--]A++ ------[A---B--]A ----[A-----B--]A ----[A-----B--]A+ --------[A---B--]A -[A--B+++++++++]A- -[A--B+++++++++]A -[A--B+++++++++]A+ -[A++B-------]A-- -[A++B-------]A- -[A++B-------]A -[A++B-------]A+ -[A++B-------]A++ -[A--B-----]A----- -[A--B-----]A---- -[A--B-----]A--- -[A--B-----]A-- -[A--B-----]A- -[A--B-----]A -[A--B-----]A+ -[A--B-----]A++ -[A--B-----]A+++ -[A--B-----]A++++ -[A--B-----]A+++++ -[A--B-----]A++++++ -[A--B-----]A+++++++ -[A-B---]A--------- -[A-B---]A-------- -[A-B---]A------- -[A-B---]A------ -[A-B---]A----- -[A-B---]A---- -[A-B---]A--- -[A-B---]A-- -[A-B---]A- -[A-B---]A -[A-B---]A+ -[A-B---]A++ -[A-B---]A+++ -[A-B---]A++++ -[A-B---]A+++++ -[A-B---]A++++++ -[A-B---]A+++++++ -[A-B---]A++++++++ -[A-B-------]A--- -[A-B-------]A-- -[A-B-------]A- -[A-B-------]A -[A-B-------]A+ -[A-B-------]A++ -[A-B-------]A+++ ----[A+++B----]A-- ----[A+++B----]A- ----[A+++B----]A ----[A-B----]A--- ----[A-B----]A-- ----[A-B----]A- ----[A-B----]A ----[A-B----]A+ ----[A-B----]A++ ----[A-B----]A+++ ----[A-B----]A++++ -[A-B+++++++++]A- -[A-B+++++++++]A -[A-B-----]A----- -[A-B-----]A---- -[A-B-----]A--- -[A-B-----]A-- -[A-B-----]A- -[A-B-----]A -[A-B-----]A+ -[A-B-----]A++ -[A-B-----]A+++ -[A-B-----]A++++ --[A-B++++++]A--- --[A-B++++++]A-- --[A-B++++++]A- --[A-B++++++]A --[A-B++++++]A+ --[A-B++++++]A++ --[A-B++++++]A+++ ---[A-B+++++++]A-- ---[A-B+++++++]A- ---[A-B+++++++]A --[A++B+++++++]A --[A++B+++++++]A+ --[A++B+++++++]A++ ----[A--------B+]A- ----[A--------B+]A -----[A------B+]A- -----[A------B+]A ----[A-------B+]A- ----[A-------B+]A ---[A---------B+]A -----[A-----B+]A- -----[A-----B+]A ----[A------B+]A ----[A------B+]A+ ---[A-------B+]A- ---[A-------B+]A ----[A-----B+]A ---[A------B+]A- ---[A------B+]A ----[A----B+]A- ----[A----B+]A ---[A-----B+]A A-------------- A------------- A------------ A----------- A---------- A--------- A-------- A------- A------ A----- A---- A--- A-- A-"
 
-type Command = enum Inc, Clear, Out, In, Set, While, EndWhile, Repeat, Comment, EndRepeat, Move, Bf, Hint, Memory, Place
+type Command = enum Inc, Clear, Out, In, Set, While, EndWhile, Repeat, Comment, EndRepeat, Move, Bf, Hint, Place
 type MemoryConstraint = ref object
     permute: bool
     register: int
@@ -12,10 +12,15 @@ type Instruction = object
   kind: Command
   reg1, reg2, amount: int
   text: string
+type Init = object
+  base: int
+  big, small: Table[int, int]
 type Program = object
   instructions: seq[Instruction]
   memoryContraints: MemoryConstraint
   regNames: seq[string]
+  init: Init
+  
   
 func `$`(cons: MemoryConstraint): string =
     if cons.sons.len == 0: return $cons.register
@@ -53,8 +58,7 @@ func countPermutations(cons: MemoryConstraint): float =
     for i,son in cons.sons:
         result *= countPermutations(son)
         if cons.permute:
-            result *= float(1+i)
-            
+            result *= float(1+i)            
 
 func invert(perm: seq[int]): seq[int] =
     result = newSeq[int](perm.len)
@@ -75,6 +79,44 @@ func getPermutations(cons: MemoryConstraint): seq[seq[int]] =
         recurse(0, @[])  
         if not cons.permute: break
     return result
+
+func myUnescape(text: string): string =
+    var esc = false
+    if text[0] notin "\"'":
+        raise newException(ValueError, "String literals must start with \" or '.")
+    var edge = text[0]
+    var text = text[1..^1]
+    for c in text:
+        if esc:
+            esc = false
+            try:
+                result &= toTable({'n':'\n', 'r':'\r', 't':'\t', '\\': '\\', edge: edge})[c]
+            except:
+                raise newException(ValueError, "Unknown escape sequence " & c & ".")
+        else:
+            if c == edge: return
+            if c == '\\':
+                esc = true
+            else:
+                result &= c
+
+func calculateInit(targets: Table[int, int]): Init =
+    var results: seq[(int,int)]
+    var minCost = int.high
+    for B in 0..16:
+        var temp = Init(base: B)
+        var cost = B - 4*int(B==16) - int(B==15)
+        for r,t in targets:
+            var best, bestDist = 256
+            for x in 0..16:
+                if abs(t - B*x mod 256) < bestDist:
+                    bestDist = abs(t - B*x mod 256)
+                    best = x
+            temp.big[r] = best
+            temp.small[r] = t - B*best mod 256
+            cost += best + abs(t - B*best mod 256)
+        if cost < minCost:
+            result = temp    
   
 func toByteCode(source: seq[string]): Program =
   var registers: Table[string, int]
@@ -88,6 +130,7 @@ func toByteCode(source: seq[string]): Program =
         memory.sons &= MemoryConstraint(register: registers[register])
     return registers[register]
   var stack: seq[Instruction]
+  var init: Table[int, int]
   for i, line in source:
     let w = line.strip.split
     case w[0]
@@ -113,6 +156,17 @@ func toByteCode(source: seq[string]): Program =
                 raise newException(ValueError, "Unmatched parenthesis.")
                         
             result.instructions &= Instruction(kind: Command.Comment)
+    of "init":
+        if result.instructions.len > 0 and result.instructions[^1].kind != Command.Comment:
+            raise newException(ValueError, "Init must be at the beggining of the program.")
+        try:
+            init[getReg(w[1])] = w[2].myUnescape[0].ord
+        except:
+            try:
+                init[getReg(w[1])] = w[2].parseInt
+            except:
+                raise newException(ValueError, "Value to be set must be a string or number literal.")
+        result.instructions &= Instruction(kind: Command.Comment)
     of "clear": result.instructions &= Instruction(kind: Command.Clear, reg1: getReg(w[1]))
     of "dec":   result.instructions &= Instruction(kind: Command.Inc, reg1: getReg(w[1]), amount: 256-(try:w[2].parseInt except: 1))
     of "inc":   result.instructions &= Instruction(kind: Command.Inc, reg1: getReg(w[1]), amount: (try:w[2].parseInt except: 1))
@@ -148,26 +202,49 @@ func toByteCode(source: seq[string]): Program =
     of "hint":
         result.instructions &= Instruction(kind: Command.Hint, reg1: getReg(w[1]))
     of "place":
-        result.instructions &= Instruction(kind: Command.Place, reg1: getReg(w[1]), text: w[2..^1].join.unescape)
+        result.instructions &= Instruction(kind: Command.Place, reg1: getReg(w[1]), text: w[2..^1].join.myUnescape)
     else:
         result.instructions &= Instruction(kind: Command.Comment)
   if stack.len > 0:
     raise newException(ValueError, "Unexpected EOF. " & $stack.len & " loop blocks still open.")
   result.memoryContraints = memory
+  result.init = calculateInit init
   result.regNames = regNames
+
+func getBrainfuck(init: Init, perm: seq[int], point: var int): string =
+    if init.base == 15:
+        result = "+++[>+++++<-]>"
+    elif init.base == 16:
+        result = "+[>-[-<]>>]>"
+    else:
+        result = "+".repeat(init.base)    
+    result &= "[->"
+    var regs = init.big.keys.toSeq.sortedByIt(perm[it])
+    point = perm[regs[0]]
+    var x = 1
+    for r in regs:
+        result &= ">".repeat(perm[r] - point)
+        x += perm[r] - point
+        point = perm[r]
+        result &= (if init.big[r] < 0: "-" else: "+").repeat(init.big[r])
+    result &= "<".repeat(x) & "]>"
+    point = perm[regs[0]]
+    for r in regs:
+        if init.small[r] != 0:
+            result &= ">".repeat(perm[r] - point)
+            point = perm[r]
+            result &= (if init.small[r] < 0: "-" else: "+").repeat(init.small[r].abs)
 
 func getBrainfuck(program: var Program, perm: var seq[int]): seq[string] =
     var point = 0
     var debts: seq[Instruction]
     var ioDebt = -1
-    var freeMove = true
     var resultt: seq[string]
     var lastDebtLine = 0
+    if program.init.small.len > 0:
+        resultt &= getBrainfuck(program.init, perm, point)
     proc goto0(reg: int, perm_i: var seq[int]): string =
-        if freeMove:
-            freeMove = false
-        else:
-            result = repeat(if perm_i[reg] > point: ">" else: "<", abs(perm_i[reg] - point))
+        result = repeat(if perm_i[reg] > point: ">" else: "<", abs(perm_i[reg] - point))
         point = perm_i[reg]
     proc goto(reg: int, perm_i: var seq[int]): string =
         var perm_i = perm_i
@@ -197,7 +274,7 @@ func getBrainfuck(program: var Program, perm: var seq[int]): seq[string] =
             debts &= ins
             resultt &= ""
             lastDebtLine = i
-        else:            
+        elif i > 0 or resultt.len == 0:
             resultt &= (case ins.kind
             of Command.Comment: ""
             of Command.EndWhile: goto(ins.reg1, perm) & "]"
@@ -213,7 +290,6 @@ func getBrainfuck(program: var Program, perm: var seq[int]): seq[string] =
             of Command.Bf: ins.text
             of Command.Hint: (point = ins.reg1; "")
             of Command.Place: goto(ins.reg1, perm) & ins.text.mapIt(constants[it.ord].multireplace(("A",">"),("B","<"))).join(">") & ">"
-            of Command.Memory: ""
             )
     discard goto(point, perm)
     return resultt
@@ -237,7 +313,6 @@ func getOptimalPerms(program: var Program): seq[seq[int]] =
 proc compile(source:string, input="") =
   var lines = source.strip.splitLines
   var program = toByteCode(lines)
-  echo program.memoryContraints
   let permCount = program.memoryContraints.countPermutations
   if permCount > 3628800.0:
     echo "Permutation count too high. Turning permutations off. Constraint the memory layout using the memory command."
@@ -247,13 +322,12 @@ proc compile(source:string, input="") =
   for perm in perms:
       var perm = perm
       let bfLines = getBrainfuck(program, perm)
-      var registers = toSeq(0..<perm.len).mapIt(perm.find it).mapIt(program.regNames[it])
-      let freeMove = registers.find(program.regNames[0])
+      var registers = perm.invert.mapIt(program.regNames[it])
       registers = registers.mapIt(it.align(3))
       let bf = bfLines.join
       echo "Length: ", $bf.len
       echo "Memory layout: ", registers.join(" ")
-      echo "               ", toSeq(0..<registers.len).mapIt(($(it - freeMove)).align(registers[it].len)).join(" ")
+      echo "               ", toSeq(0..<registers.len).mapIt(($it).align(registers[it].len)).join(" ")
       echo "Golfed: ", bf
   let maxlen = lines.mapIt(it.len).max
   var perm = perms[0]

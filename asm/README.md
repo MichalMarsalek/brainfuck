@@ -51,7 +51,8 @@ end
 * `inc register [amount=1]` - goes to the cell `register` and incrementsit by the given amount
 * `out register [amount=1]` - goes to the cell `register` and outputs `amount` times
 * `in register` - goes to the cell `register` and gets input
-* `set register dummy c` - goes to the cell `register` and sets it to the constant `c` (either a character or a decimal value 15..241) assuming both registers `register`and `dummy` are zero
+* `set register dummy c` - goes to the cell `register` and sets it to the constant `c` (either a character or a decimal value 15..241) assuming both registers `register`and `dummy` are zero. Deprecated, use `init` instead.
+* `init register value` - initializes the register to the given constant (either a character or a decimal value)
 * `while register` - goes to the cell `register` and starts a loop
 * `end` - goes to the`register` cell of the matching `while` command and ends a loop
 * `repeat reg1 reg2` - stars a nondestructive loop of length `reg2`. Assumes `reg1` starts at zero and doesn't change inside the loop
@@ -97,7 +98,7 @@ If the program gets no input, it is interpreted, assumptions on dummy registers 
 
 ## Online script
 
-You can run this program [online](https://play.nim-lang.org/#ix=3U6W).
+You can run this program [online](https://play.nim-lang.org/#ix=3UaJ).
 
 ## References
 The list of constants this program used is extracted from [Esolangs wiki](https://esolangs.org/wiki/Brainfuck_constants).
