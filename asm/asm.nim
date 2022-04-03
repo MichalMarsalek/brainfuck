@@ -212,6 +212,11 @@ func toByteCode(source: seq[string]): Program =
   result.regNames = regNames
 
 func getBrainfuck(init: Init, perm: seq[int], point: var int): string =
+    # TODO
+    # make use for holes in the init registers for the base counter, instead
+    # of just the cell on the left
+    # this strategy is better
+    # On the other hand, if there are no holes use [<] instead of <<<<<<<<<
     if init.base == 15:
         result = "+++[>+++++<-]>"
     elif init.base == 16:
