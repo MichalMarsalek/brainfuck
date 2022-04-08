@@ -292,8 +292,8 @@ func getBrainfuck(program: var Program, perm: var seq[int]): seq[string] =
             of Command.Inc: goto(ins.reg1, perm) & (if ins.amount < 128: "+".repeat(ins.amount) else: "-".repeat(256-ins.amount))
             of Command.Out: goto(ins.reg1, perm) & ".".repeat(ins.amount)
             of Command.In: goto(ins.reg1, perm) & ","
-            of Command.Bf: ins.text
-            of Command.Hint: (point = ins.reg1; "")
+            of Command.Bf: (discard goto(point, perm);ins.text)
+            of Command.Hint: (discard goto(ins.reg1, perm); "")
             of Command.Place: goto(ins.reg1, perm) & ins.text.mapIt(constants[it.ord].multireplace(("A",">"),("B","<"))).join(">") & ">"
             )
     discard goto(point, perm)
