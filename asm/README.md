@@ -50,6 +50,7 @@ end
 * `in register` - goes to the cell `register` and gets input
 * `set register dummy c` - goes to the cell `register` and sets it to the constant `c` (either a character or a decimal value 15..241) assuming both registers `register`and `dummy` are zero. Deprecated, use `init` instead.
 * `init register value` - initializes the register to the given constant (either a character or a decimal value)
+* `fill pattern` - fills the entire tape with the given pattern - either a string or space separated numbers
 * `while register` - goes to the cell `register` and starts a loop
 * `end` - goes to the`register` cell of the matching `while` command and ends a loop
 * `repeat reg1 reg2` - stars a nondestructive loop of length `reg2`. Assumes `reg1` starts at zero and doesn't change inside the loop
@@ -92,10 +93,6 @@ All registers that appear anywhere in the code are given a position on the tape.
 All lines starting with a noncommand and all words after a command are ignored. This means, you can send the output of this tool to its input. Also you can add comments to the source easily.
 
 If the program gets no input, it is interpreted, assumptions on dummy registers are checked and the result is shown to you. This helps when writing a program that outputs a specific constant string.
-
-## Online script
-
-You can run this program [online](https://play.nim-lang.org/#ix=3UaJ).
 
 ## References
 The list of constants this program used is extracted from [Esolangs wiki](https://esolangs.org/wiki/Brainfuck_constants).

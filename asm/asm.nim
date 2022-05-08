@@ -3,7 +3,7 @@ import algorithm, math
 
 const constants = split "A A+ A++ A+++ A++++ A+++++ A++++++ A+++++++ A++++++++ A+++++++++ A++++++++++ A+++++++++++ A++++++++++++ A+++++++++++++ A++++++++++++++ +++[A+++++B-]A ++++[A++++B-]A ++++[A++++B-]A+ +++[A++++++B-]A +++[A++++++B-]A+ ++++[A+++++B-]A +++[A+++++++B-]A +++[A+++++++B-]A+ ++++[A++++++B-]A- ++++[A++++++B-]A +++++[A+++++B-]A +++++[A+++++B-]A+ +++[A+++++++++B-]A ++++[A+++++++B-]A ++++[A+++++++B-]A+ +++++[A++++++B-]A +++++[A++++++B-]A+ ++++[A++++++++B-]A ++++[A++++++++B-]A+ --[A--B+++++++]A-- --[A--B+++++++]A- --[A--B+++++++]A ---[A+B+++++++]A ---[A+B+++++++]A+ ---[A+B+++++++]A++ --[A+B++++++]A--- --[A+B++++++]A-- --[A+B++++++]A- --[A+B++++++]A --[A+B++++++]A+ --[A+B++++++]A++ --[A+B++++++]A+++ -[A+B-----]A---- -[A+B-----]A--- -[A+B-----]A-- -[A+B-----]A- -[A+B-----]A -[A+B-----]A+ -[A+B-----]A++ -[A+B-----]A+++ -[A+B-----]A++++ -[A+B-----]A+++++ -[A+B+++++++++]A -[A+B+++++++++]A+ ----[A+B----]A---- ----[A+B----]A--- ----[A+B----]A-- ----[A+B----]A- ----[A+B----]A ----[A+B----]A+ ----[A+B----]A++ ----[A+B----]A+++ ----[A---B----]A ----[A---B----]A+ ----[A---B----]A++ -[A+B-------]A--- -[A+B-------]A-- -[A+B-------]A- -[A+B-------]A -[A+B-------]A+ -[A+B-------]A++ -[A+B-------]A+++ -[A+B---]A-------- -[A+B---]A------- -[A+B---]A------ -[A+B---]A----- -[A+B---]A---- -[A+B---]A--- -[A+B---]A-- -[A+B---]A- -[A+B---]A -[A+B---]A+ -[A+B---]A++ -[A+B---]A+++ -[A+B---]A++++ -[A+B---]A+++++ -[A+B---]A++++++ -[A+B---]A+++++++ -[A+B---]A++++++++ -[A+B---]A+++++++++ -[A++B-----]A------- -[A++B-----]A------ -[A++B-----]A----- -[A++B-----]A---- -[A++B-----]A--- -[A++B-----]A-- -[A++B-----]A- -[A++B-----]A -[A++B-----]A+ -[A++B-----]A++ -[A++B-----]A+++ -[A++B-----]A++++ -[A++B-----]A+++++ -[A--B-------]A-- -[A--B-------]A- -[A--B-------]A -[A--B-------]A+ -[A--B-------]A++ -[A++B+++++++++]A- -[A++B+++++++++]A -[A++B+++++++++]A+ --------[A+++B--]A ----[A+++++B--]A- ----[A+++++B--]A ------[A+++B--]A ----[A+++B--]A-- ----[A+++B--]A- ----[A+++B--]A --[A+B--]A---- --[A+B--]A--- --[A+B--]A-- --[A+B--]A- --[A+B--]A --[A-B--]A- --[A-B--]A --[A-B--]A+ --[A-B--]A++ --[A-B--]A+++ --[A-B--]A++++ ----[A---B--]A ----[A---B--]A+ ----[A---B--]A++ ------[A---B--]A ----[A-----B--]A ----[A-----B--]A+ --------[A---B--]A -[A--B+++++++++]A- -[A--B+++++++++]A -[A--B+++++++++]A+ -[A++B-------]A-- -[A++B-------]A- -[A++B-------]A -[A++B-------]A+ -[A++B-------]A++ -[A--B-----]A----- -[A--B-----]A---- -[A--B-----]A--- -[A--B-----]A-- -[A--B-----]A- -[A--B-----]A -[A--B-----]A+ -[A--B-----]A++ -[A--B-----]A+++ -[A--B-----]A++++ -[A--B-----]A+++++ -[A--B-----]A++++++ -[A--B-----]A+++++++ -[A-B---]A--------- -[A-B---]A-------- -[A-B---]A------- -[A-B---]A------ -[A-B---]A----- -[A-B---]A---- -[A-B---]A--- -[A-B---]A-- -[A-B---]A- -[A-B---]A -[A-B---]A+ -[A-B---]A++ -[A-B---]A+++ -[A-B---]A++++ -[A-B---]A+++++ -[A-B---]A++++++ -[A-B---]A+++++++ -[A-B---]A++++++++ -[A-B-------]A--- -[A-B-------]A-- -[A-B-------]A- -[A-B-------]A -[A-B-------]A+ -[A-B-------]A++ -[A-B-------]A+++ ----[A+++B----]A-- ----[A+++B----]A- ----[A+++B----]A ----[A-B----]A--- ----[A-B----]A-- ----[A-B----]A- ----[A-B----]A ----[A-B----]A+ ----[A-B----]A++ ----[A-B----]A+++ ----[A-B----]A++++ -[A-B+++++++++]A- -[A-B+++++++++]A -[A-B-----]A----- -[A-B-----]A---- -[A-B-----]A--- -[A-B-----]A-- -[A-B-----]A- -[A-B-----]A -[A-B-----]A+ -[A-B-----]A++ -[A-B-----]A+++ -[A-B-----]A++++ --[A-B++++++]A--- --[A-B++++++]A-- --[A-B++++++]A- --[A-B++++++]A --[A-B++++++]A+ --[A-B++++++]A++ --[A-B++++++]A+++ ---[A-B+++++++]A-- ---[A-B+++++++]A- ---[A-B+++++++]A --[A++B+++++++]A --[A++B+++++++]A+ --[A++B+++++++]A++ ----[A--------B+]A- ----[A--------B+]A -----[A------B+]A- -----[A------B+]A ----[A-------B+]A- ----[A-------B+]A ---[A---------B+]A -----[A-----B+]A- -----[A-----B+]A ----[A------B+]A ----[A------B+]A+ ---[A-------B+]A- ---[A-------B+]A ----[A-----B+]A ---[A------B+]A- ---[A------B+]A ----[A----B+]A- ----[A----B+]A ---[A-----B+]A A-------------- A------------- A------------ A----------- A---------- A--------- A-------- A------- A------ A----- A---- A--- A-- A-"
 
-type Command = enum Inc, Clear, Out, In, Set, While, EndWhile, Repeat, Comment, EndRepeat, Move, Bf, Hint, Place
+type Command = enum Inc, Clear, Out, In, Set, While, EndWhile, Repeat, Comment, EndRepeat, Move, Bf, Hint, Place, Fill
 type MemoryConstraint = ref object
     permute: bool
     register: int
@@ -28,6 +28,16 @@ func `$`(cons: MemoryConstraint): string =
     if cons.permute:
         return "{" & inner & "}"
     return "(" & inner & ")"
+
+func incStr(x: int): string =
+    var x = x
+    if x > 128:
+        x -= 256
+    if x > 0: return "+".repeat abs x
+    return "-".repeat abs x
+
+func moveStr(x: int): string =
+    repeat(if x < 0: "<" else: ">", abs x)
 
 func isInOut(ins: Instruction): bool =
     ins.kind == Command.In or ins.kind == Command.Out
@@ -117,6 +127,23 @@ func calculateInit(targets: Table[int, int]): Init =
             cost += best + abs(t - B*best mod 256)
         if cost < minCost:
             result = temp    
+
+func fillPattern(pattern: seq[int]): string =
+    if pattern.len == 1:
+        var c = constants[pattern[0]]
+        if c[0] == '+':
+            c = c[1..^1]
+        else:
+            c = '-' & c
+        c = c.replace("A", "<")
+        c = c.replace("B", ">")
+        result = "-" & ">>+[" & c & ">>+]"
+        result = result.replace("<>", "")
+        let res2 = incStr(sgn pattern[0]) & "[>" & incStr(-pattern[0]) & "]"
+        if pattern[0] mod 2 == 0 and res2.len < result.len:
+            result = res2
+    else:
+        raise newException(ValueError, "General fill pattern not implemented yet.")
   
 func toByteCode(source: seq[string]): Program =
   var registers: Table[string, int]
@@ -131,6 +158,7 @@ func toByteCode(source: seq[string]): Program =
     return registers[register]
   var stack: seq[Instruction]
   var init: Table[int, int]
+  var memorySet = false
   for i, line in source:
     let w = line.strip.split
     case w[0]
@@ -138,6 +166,7 @@ func toByteCode(source: seq[string]): Program =
         if i != 0:
             raise newException(ValueError, "The memory command must be on line 1.")
         else:
+            memorySet = true
             var tokens = getMemoryTokens(w[1..^1])
             var stack = @[memory]
             for token in tokens:
@@ -160,13 +189,25 @@ func toByteCode(source: seq[string]): Program =
         if result.instructions.len > 0 and result.instructions[^1].kind != Command.Comment:
             raise newException(ValueError, "Init must be at the beggining of the program.")
         try:
-            init[getReg(w[1])] = w[2].myUnescape[0].ord
+            init[getReg(w[1])] = w[2..^1].join.myUnescape[0].ord
         except:
             try:
                 init[getReg(w[1])] = w[2].parseInt
             except:
                 raise newException(ValueError, "Value to be set must be a string or number literal.")
         result.instructions &= Instruction(kind: Command.Comment)
+    of "fill":
+        var fill: seq[int]
+        if not (i == 0 or (memorySet and i == 1)):
+            raise newException(ValueError, "Fill must be at the beggining of the program.")
+        try:
+            fill = w[1..^1].join.myUnescape.mapIt it.ord
+        except:
+            try:
+                fill = w[1..^1].map parseInt
+            except:
+                raise newException(ValueError, "Fill pattern must be a string or sequence of number literals.")
+        result.instructions &= Instruction(kind: Command.Fill, text: fillPattern fill)
     of "clear": result.instructions &= Instruction(kind: Command.Clear, reg1: getReg(w[1]))
     of "dec":   result.instructions &= Instruction(kind: Command.Inc, reg1: getReg(w[1]), amount: 256-(try:w[2].parseInt except: 1))
     of "inc":   result.instructions &= Instruction(kind: Command.Inc, reg1: getReg(w[1]), amount: (try:w[2].parseInt except: 1))
@@ -222,23 +263,23 @@ func getBrainfuck(init: Init, perm: seq[int], point: var int): string =
     elif init.base == 16:
         result = "+[>-[-<]>>]>"
     else:
-        result = "+".repeat(init.base)    
+        result = incStr init.base   
     result &= "[->"
     var regs = init.big.keys.toSeq.sortedByIt(perm[it])
     point = perm[regs[0]]
     var x = 1
     for r in regs:
-        result &= ">".repeat(perm[r] - point)
+        result &= moveStr(perm[r] - point)
         x += perm[r] - point
         point = perm[r]
-        result &= (if init.big[r] < 0: "-" else: "+").repeat(init.big[r])
-    result &= "<".repeat(x) & "]>"
+        result &= incStr init.big[r]
+    result &= moveStr(x) & "]>"
     point = perm[regs[0]]
     for r in regs:
         if init.small[r] != 0:
-            result &= ">".repeat(perm[r] - point)
+            result &= moveStr(perm[r] - point)
             point = perm[r]
-            result &= (if init.small[r] < 0: "-" else: "+").repeat(init.small[r].abs)
+            result &= incStr init.small[r]
 
 func getBrainfuck(program: var Program, perm: var seq[int]): seq[string] =
     var point = 0
@@ -249,7 +290,7 @@ func getBrainfuck(program: var Program, perm: var seq[int]): seq[string] =
     if program.init.small.len > 0:
         resultt &= getBrainfuck(program.init, perm, point)
     proc goto0(reg: int, perm_i: var seq[int]): string =
-        result = repeat(if perm_i[reg] > point: ">" else: "<", abs(perm_i[reg] - point))
+        result = moveStr(perm_i[reg] - point)
         point = perm_i[reg]
     proc goto(reg: int, perm_i: var seq[int]): string =
         var perm_i = perm_i
@@ -261,7 +302,7 @@ func getBrainfuck(program: var Program, perm: var seq[int]): seq[string] =
             var payback = ""
             for ins in debts:
                 payback &= (case ins.kind
-                of Command.Inc: goto0(ins.reg1, perm_i) & (if ins.amount < 128: "+".repeat(ins.amount) else: "-".repeat(256-ins.amount))
+                of Command.Inc: goto0(ins.reg1, perm_i) & incStr ins.amount
                 of Command.Out: goto0(ins.reg1, perm_i) & ".".repeat(ins.amount)
                 of Command.In:  goto0(ins.reg1, perm_i) & ","
                 else: "")
@@ -289,12 +330,13 @@ func getBrainfuck(program: var Program, perm: var seq[int]): seq[string] =
             of Command.Repeat: goto(ins.reg2, perm)& "["
             of Command.Clear: goto(ins.reg1, perm) & "[-]"
             of Command.Move: goto0(ins.reg1, perm) & "[" & "-" & goto0(ins.reg2, perm) & "+" & goto0(ins.reg1, perm) & "]"
-            of Command.Inc: goto(ins.reg1, perm) & (if ins.amount < 128: "+".repeat(ins.amount) else: "-".repeat(256-ins.amount))
+            of Command.Inc: goto(ins.reg1, perm) & incStr ins.amount
             of Command.Out: goto(ins.reg1, perm) & ".".repeat(ins.amount)
             of Command.In: goto(ins.reg1, perm) & ","
             of Command.Bf: (discard goto(point, perm);ins.text)
             of Command.Hint: (discard goto(ins.reg1, perm); "")
             of Command.Place: goto(ins.reg1, perm) & ins.text.mapIt(constants[it.ord].multireplace(("A",">"),("B","<"))).join(">") & ">"
+            of Command.Fill: ins.text
             )
     discard goto(point, perm)
     return resultt
