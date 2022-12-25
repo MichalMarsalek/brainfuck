@@ -52,7 +52,7 @@ end
 * `init register value` - initializes the register to the given constant (either a character or a decimal value)
 * `fill pattern` - fills the entire tape with the given pattern - either a string or space separated numbers
 * `while register` - goes to the cell `register` and starts a loop
-* `end` - goes to the`register` cell of the matching `while` command and ends a loop
+* `end` - marks the end of a definition or goes to the`register` cell of the matching `while` command and ends a loop
 * `repeat reg1 reg2` - stars a nondestructive loop of length `reg2`. Assumes `reg1` starts at zero and doesn't change inside the loop
                      - You can think of this as a for loop. Inside the loop, `reg1` is equal to 0, 1, ..., `reg2`-1. On the other hand `reg2` lowers by one on each iteration. After the loop, the registers are reset.
                      The code
@@ -86,7 +86,8 @@ end
 * `memory layout` - constraints the memory layout. This serves two purposes. First, it reduces the search space which is neccessary when more than 10 variables are used (7 in the online version). Second, it is sometimes neccesary when using the `bf` command to force certain registers to be in specific relative positions. The layout is either a single register name, a list of layouts (surronded by `(`, `)` and space separated) or a set of layouts (same, but surrounded by `{`, `}`).
 * `hint reg` - doesn't produce any brainfuck, but tells the compiler where the pointer is supposed to be located (this is relevant after the `bf` command if the compiler cannot infer the position of the pointer).
 * `place reg text` - assuming all the relevant cells are empty, places the given string on the tape. Characters are interleaved with null cells.
-
+* `define name ... end` - defines a subroutine
+* `call name` - calls the previously defined subroutine
 
 All registers that appear anywhere in the code are given a position on the tape. The layout minimizing the brainfuck code length is chosen. A sequence of `inc`, `dec` and at most one `in`/`out` is always executed in an optimal order.
 
