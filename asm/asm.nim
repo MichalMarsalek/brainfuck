@@ -358,6 +358,11 @@ func getBrainfuck(program: var Program, perm: var seq[int]): seq[string] =
             )
         inc callStack[^1]
     discard goto(-1, perm)
+    for x in mitems resultt:
+        if x.len > 0:
+            while x.len > 0 and x[0] in "<>":
+                x = x[1..^1]
+            break
     return resultt
 
 func getLength(program: var Program, perm: var seq[int]): int =
